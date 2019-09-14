@@ -1,23 +1,17 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
-import {
-  PROFILE_PAGE,
-  MESSAGES,
-  NEWS,
-  MUSIC,
-  SETTINGS
-} from "../../constants/url";
+import { PROFILE, MESSAGES, NEWS, MUSIC, SETTINGS } from "../../constants/url";
 import { MainLayout } from "../../layouts/MainLayout";
 
 import "./App.scss";
 
 // Import pages
 const ProfilePage = lazy(() => import("../../routes/ProfilePage"));
-// const TopResultsPage = lazy(() => import("../../routes/TopResultsPage"));
-// const ArtistsPage = lazy(() => import("../../routes/ArtistsPage"));
-// const SongsPage = lazy(() => import("../../routes/SongsPage"));
-// const AlbumsPage = lazy(() => import("../../routes/AlbumsPage"));
+const MessagesPage = lazy(() => import("../../routes/MessagesPage"));
+const NewsPage = lazy(() => import("../../routes/NewsPage"));
+const MusicPage = lazy(() => import("../../routes/MusicPage"));
+const SettingsPage = lazy(() => import("../../routes/SettingsPage"));
 
 export const App = () => {
   return (
@@ -25,13 +19,13 @@ export const App = () => {
       <MainLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
-            <Route exact component={ProfilePage} path={PROFILE_PAGE} />
-            {/* <Route exact component={TopResultsPage} path={TOP_RESULTS} />
-            <Route exact component={ArtistsPage} path={ARTISTS} />
-            <Route exact component={SongsPage} path={SONGS} />
-            <Route exact component={AlbumsPage} path={ALBUMS} /> */}
+            <Route exact component={ProfilePage} path={PROFILE} />
+            <Route exact component={MessagesPage} path={MESSAGES} />
+            <Route exact component={NewsPage} path={NEWS} />
+            <Route exact component={MusicPage} path={MUSIC} />
+            <Route exact component={SettingsPage} path={SETTINGS} />
 
-            <Redirect to={PROFILE_PAGE} />
+            <Redirect to={PROFILE} />
           </Switch>
         </Suspense>
       </MainLayout>
