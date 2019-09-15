@@ -1,0 +1,11 @@
+@import "../../../styles/_vars.scss";
+
+.conversations {
+  grid-area: mainConversations;
+  background-color: lightpink;
+  position: fixed;
+  width: 250px;
+  top: $header-height;
+  right: 0;
+  height: 100%;
+}

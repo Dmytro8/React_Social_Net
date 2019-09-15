@@ -1,0 +1,9 @@
+@import "../../../styles/_vars.scss";
+.navbar {
+  grid-area: mainNav;
+  background-color: deepskyblue;
+  position: fixed;
+  width: 250px;
+  top: $header-height;
+  height: 100%;
+}

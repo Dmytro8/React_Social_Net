@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./MainLayout.scss";
 
-import { Header } from "../../containers/Header";
-import { NavBar } from "../../containers/NavBar";
-import { Conversations } from "../../containers/Conversations";
+import { Header } from "../../containers/HeaderContainers/Header";
+import { NavBar } from "../../containers/LeftBarContainers/NavBar";
+import { Conversations } from "../../containers/RightBarContainers/Conversations";
 
 export class MainLayout extends Component {
   render() {

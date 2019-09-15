@@ -1,24 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
 
-import "./ProfilePage.scss";
+import classes from "./ProfilePage.module.scss";
+import { ProfileHeader } from "../../components/ProfileComponents/ProfileHeader";
+import { Posts } from "../../containers/ProfileContainers/Posts";
+import { ProfileBg } from "../../components/ProfileComponents/ProfileBg";
 
-import contentImage from "../../static/images/content-image.jpg";
-
-export const ProfilePage = () => {
-  return (
-    <div>
-      <div>
-        <img src={contentImage} alt="content" />
-      </div>
-      <div>ava + description</div>
-      <div>
-        My posts
-        <div>New Posts</div>
-        <div>
-          <div>post 1</div>
-          <div>post 2</div>
+export class ProfilePage extends Component {
+  render() {
+    return (
+      <div className={classes.wrapper}>
+        <ProfileBg />
+        <div className={classes.profileContent}>
+          <ProfileHeader />
+          <Posts />
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}

@@ -5,4 +5,11 @@
 }
 body {
   height: 100vh;
+  background-color: rgb(240, 240, 240);
+}
+li {
+  list-style: none;
+}
+li > a {
+  text-decoration: none;
 }
