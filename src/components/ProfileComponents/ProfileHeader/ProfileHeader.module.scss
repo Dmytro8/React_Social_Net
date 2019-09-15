@@ -1,5 +1,5 @@
 .profileImg {
-  margin: -75px 0 0 30px;
+  margin: -75px 0 0 0;
   display: grid;
   height: 150px;
   width: 150px;
@@ -14,7 +14,7 @@
 
 .profileName {
   position: absolute;
-  margin: -120px 0 0 210px;
+  margin: -120px 0 0 180px;
   z-index: 3;
   color: white;
 }
@@ -24,7 +24,7 @@
   height: 75px;
   width: 100%;
   ul {
-    margin-left: 210px;
+    margin-left: 180px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;

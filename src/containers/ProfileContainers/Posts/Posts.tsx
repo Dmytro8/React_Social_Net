@@ -8,11 +8,7 @@ export const Posts = () => {
     <div>
       My posts
       <div>New Posts</div>
-      <div>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+      <div className={classes.wrapperPosts}>
         <Post />
         <Post />
       </div>

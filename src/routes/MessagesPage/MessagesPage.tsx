@@ -28,6 +28,190 @@ export const MessagesPage = () => {
         <div>nameUser</div>
         <div>text from conversation</div>
       </div>
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
+      <hr />
+      <div>
+        <div>ava</div>
+        <div>nameUser</div>
+        <div>text from conversation</div>
+      </div>
     </div>
   );
 };
