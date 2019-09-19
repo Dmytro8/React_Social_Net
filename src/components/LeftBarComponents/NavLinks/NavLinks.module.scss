@@ -1,4 +1,22 @@
+@import "../../../styles/_vars.scss";
+
 .navLinks {
   display: grid;
-  height: 30px;
+  height: 50px;
+  color: black;
+  :hover {
+    background: $bg-color;
+  }
+  :active {
+    color: inherit;
+  }
+  :visited {
+    color: inherit;
+  }
+}
+
+.navLinks a {
+  align-self: center;
+  padding-left: 40px;
+  line-height: 50px;
 }

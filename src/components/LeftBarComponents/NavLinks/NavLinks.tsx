@@ -2,6 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import classes from "./NavLinks.module.scss";
+import {
+  PROFILE,
+  MESSAGES,
+  NEWS,
+  MUSIC,
+  SETTINGS
+} from "../../../constants/url";
 
 export const NavLinks = () => {
   return (
@@ -9,23 +16,23 @@ export const NavLinks = () => {
       <ul>
         <li className={classes.navLinks}>
           {/* eslint-disable-next-line */}
-          <Link to="/">My Profile</Link>
+          <Link to={PROFILE}>My Profile</Link>
         </li>
         <li className={classes.navLinks}>
           {/* eslint-disable-next-line */}
-          <Link to="/messages">Messages</Link>
+          <Link to={MESSAGES}>Messages</Link>
         </li>
         <li className={classes.navLinks}>
           {/* eslint-disable-next-line */}
-          <Link to="/news">News</Link>
+          <Link to={NEWS}>News</Link>
         </li>
         <li className={classes.navLinks}>
           {/* eslint-disable-next-line */}
-          <Link to="/music">Music</Link>
+          <Link to={MUSIC}>Music</Link>
         </li>
         <li className={classes.navLinks}>
           {/* eslint-disable-next-line */}
-          <Link to="/settings">Settings</Link>
+          <Link to={SETTINGS}>Settings</Link>
         </li>
       </ul>
     </nav>

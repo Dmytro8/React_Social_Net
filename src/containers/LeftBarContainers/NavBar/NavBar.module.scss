@@ -1,7 +1,7 @@
 @import "../../../styles/_vars.scss";
 .navbar {
   grid-area: mainNav;
-  background-color: deepskyblue;
+  background-color: $bg-panel-color;
   position: fixed;
   width: 250px;
   top: $header-height;

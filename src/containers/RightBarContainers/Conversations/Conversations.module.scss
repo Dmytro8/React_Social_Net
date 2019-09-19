@@ -2,7 +2,7 @@
 
 .conversations {
   grid-area: mainConversations;
-  background-color: lightpink;
+  background-color: $bg-panel-color;
   position: fixed;
   width: 250px;
   top: $header-height;
