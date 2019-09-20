@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import classes from "./NavLinks.module.scss";
 import {
@@ -16,23 +16,53 @@ export const NavLinks = () => {
       <ul>
         <li className={classes.navLinks}>
           {/* eslint-disable-next-line */}
-          <Link to={PROFILE}>My Profile</Link>
+          <NavLink
+            className={classes.aLink}
+            to={PROFILE}
+            activeClassName={classes.selected}
+          >
+            My Profile
+          </NavLink>
         </li>
         <li className={classes.navLinks}>
           {/* eslint-disable-next-line */}
-          <Link to={MESSAGES}>Messages</Link>
+          <NavLink
+            className={classes.aLink}
+            to={MESSAGES}
+            activeClassName={classes.selected}
+          >
+            Messages
+          </NavLink>
         </li>
         <li className={classes.navLinks}>
           {/* eslint-disable-next-line */}
-          <Link to={NEWS}>News</Link>
+          <NavLink
+            className={classes.aLink}
+            to={NEWS}
+            activeClassName={classes.selected}
+          >
+            News
+          </NavLink>
         </li>
         <li className={classes.navLinks}>
           {/* eslint-disable-next-line */}
-          <Link to={MUSIC}>Music</Link>
+          <NavLink
+            className={classes.aLink}
+            to={MUSIC}
+            activeClassName={classes.selected}
+          >
+            Music
+          </NavLink>
         </li>
         <li className={classes.navLinks}>
           {/* eslint-disable-next-line */}
-          <Link to={SETTINGS}>Settings</Link>
+          <NavLink
+            className={classes.aLink}
+            to={SETTINGS}
+            activeClassName={classes.selected}
+          >
+            Settings
+          </NavLink>
         </li>
       </ul>
     </nav>

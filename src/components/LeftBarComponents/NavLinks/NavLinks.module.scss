@@ -4,15 +4,28 @@
   display: grid;
   height: 50px;
   color: black;
+
   :hover {
     background: $bg-color;
   }
-  :active {
-    color: inherit;
-  }
+
+  // .active {
+  //   color: $accent-color;
+  // }
+}
+
+.aLink {
   :visited {
-    color: inherit;
+    color: $accent-color;
   }
+}
+
+.selected {
+  color: $accent-color;
+
+  // :active {
+  //   color: inherit;
+  // }
 }
 
 .navLinks a {
