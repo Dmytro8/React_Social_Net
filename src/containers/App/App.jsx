@@ -13,14 +13,22 @@ const NewsPage = lazy(() => import("../../routes/NewsPage"));
 const MusicPage = lazy(() => import("../../routes/MusicPage"));
 const SettingsPage = lazy(() => import("../../routes/SettingsPage"));
 
-export const App = () => {
+export const App = ({ state }) => {
   return (
     <BrowserRouter>
       <MainLayout>
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
-            <Route exact component={ProfilePage} path={PROFILE} />
-            <Route exact component={MessagesPage} path={MESSAGES} />
+            <Route
+              exact
+              render={() => <ProfilePage profileData={state.profileData} />}
+              path={PROFILE}
+            />
+            <Route
+              exact
+              render={() => <MessagesPage userData={state.messagesData} />}
+              path={MESSAGES}
+            />
             <Route exact component={NewsPage} path={NEWS} />
             <Route exact component={MusicPage} path={MUSIC} />
             <Route exact component={SettingsPage} path={SETTINGS} />

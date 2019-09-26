@@ -2,13 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import classes from "./NavLinks.module.scss";
-import {
-  PROFILE,
-  MESSAGES,
-  NEWS,
-  MUSIC,
-  SETTINGS
-} from "../../../constants/url";
+import { PROFILE, MESSAGES, NEWS, MUSIC, SETTINGS } from "../../constants/url";
 
 export const NavLinks = () => {
   return (

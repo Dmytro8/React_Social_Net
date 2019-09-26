@@ -1,6 +1,7 @@
+@import "../../../styles/_vars.scss";
 .header {
   grid-area: mainHeader;
-  background-color: coral;
+  background-color: $accent-color;
   position: sticky;
   top: 0;
   z-index: 1000;

@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.4.3",
+    "@types/node": "^12.7.5",
     "@types/react": "^16.9.2",
     "@types/react-router-dom": "^4.3.5",
     "css-loader": "^3.2.0",

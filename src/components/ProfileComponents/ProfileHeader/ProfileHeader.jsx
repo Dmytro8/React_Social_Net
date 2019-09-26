@@ -2,18 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./ProfileHeader.module.scss";
 
-import profileImg from "../../../static/images/profile-img.jpg";
 import { PROFILE } from "../../../constants/url";
 
-export const ProfileHeader = () => {
+export const ProfileHeader = ({ profileData }) => {
+  let userImage = profileData.map(profile => (
+    <img
+      src={require(`../../../static/images/${profile.name} ${profile.surname}.jpg`)}
+      alt="profile avatar"
+    />
+  ));
+  let userName = profileData.map(profile => (
+    <h2>{`${profile.name} ${profile.surname}`}</h2>
+  ));
+
   return (
     <div>
-      <div className={classes.profileImg}>
-        <img src={profileImg} alt="profile avatar" />
-      </div>
-      <div className={classes.profileName}>
-        <h2>Name Surname</h2>
-      </div>
+      <div className={classes.profileImg}>{userImage}</div>
+      <div className={classes.profileName}>{userName}</div>
       <nav className={classes.profileNav}>
         <ul>
           <li className={classes.navLinks}>

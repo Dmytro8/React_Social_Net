@@ -1,8 +1,7 @@
 .wrapper {
-  margin: 20px 0;
   border: 1px solid silver;
   border-radius: 7px;
-  padding: 20px;
+  padding: 15px;
 }
 
 .details {
@@ -22,9 +21,13 @@
     }
   }
 
-  .info span {
+  .userName {
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
+  }
+
+  .addedPost {
+    margin-left: 5px;
   }
 
   .createdDate {
@@ -65,19 +68,22 @@
 .community {
   display: grid;
   margin-top: 10px;
-  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-columns: 1fr 1fr;
 
   a {
     color: rgb(114, 114, 114);
   }
+}
+.likesShareWrapper {
+  justify-self: end;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.share {
+  justify-self: end;
+  margin-right: 10px;
+}
 
-  .share {
-    justify-self: end;
-  }
-
-  .likes {
-    margin-left: 20px;
-    justify-self: end;
-    min-width: 40px;
-  }
+.likes {
+  justify-self: end;
 }

@@ -1,0 +1,17 @@
+@import "../../styles/_vars.scss";
+.inputSearch {
+  input {
+    padding-left: 20px;
+    width: 100%;
+    line-height: 50px;
+    font-size: 16px;
+    background-color: $bg-panel-color;
+    border: none;
+  }
+  :focus {
+    background-color: aliceblue;
+    outline: 0;
+  }
+}
+.dialogLink {
+}

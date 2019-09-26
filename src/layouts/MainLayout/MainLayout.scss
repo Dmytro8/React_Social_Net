@@ -14,8 +14,8 @@
 .content {
   grid-area: mainContent;
   margin-top: 20px;
-  background-color: rgb(235, 235, 235);
-  box-shadow: 2px 0 10px -5px rgba(109, 109, 109, 0.8),
+  background-color: $bg-panel-color;
+  box-shadow: 2px 0 10px -5px rgba(117, 117, 117, 0.8),
     -2px 0 10px -5px rgba(117, 117, 117, 0.8);
   border-radius: 7px;
   overflow: hidden;
