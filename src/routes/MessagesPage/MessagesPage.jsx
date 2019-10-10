@@ -8,7 +8,10 @@ import { MESSAGES } from "../../constants/url";
 
 export const MessagesPage = props => {
   let userData = props.userData.map(user => (
-    <NavLink className={classes.dialogLink} to={`${MESSAGES}/${user.id}`}>
+    <NavLink
+      className={classes.dialogLink}
+      to={`${MESSAGES}/${user.name}-${user.surname}`}
+    >
       <Dialog id={user.id} name={user.name} surname={user.surname} />
     </NavLink>
   ));
@@ -18,7 +21,7 @@ export const MessagesPage = props => {
       <div className={classes.inputSearch}>
         <input type="text" placeholder="Search" />
       </div>
-      {userData}
+      <div className={classes.dialogsData}>{userData}</div>
     </div>
   );
 };

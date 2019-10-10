@@ -2,6 +2,7 @@ import React from "react";
 // import userImg from "../../static/images/profile-img.jpg";
 
 import classes from "./Dialog.module.scss";
+import { ProfileAvatarMini } from "../ProfileComponents/ProfileAvatarMini";
 
 export const Dialog = ({ id, name, surname }) => {
   return (
@@ -11,10 +12,7 @@ export const Dialog = ({ id, name, surname }) => {
       </div>
       <div className={classes.wrapperGrid}>
         <div className={classes.userImg}>
-          <img
-            src={require(`../../static/images/${name} ${surname}.jpg`)}
-            alt="user"
-          />
+          <ProfileAvatarMini name={name} surname={surname} />
         </div>
         <div className={classes.content}>
           <div className={classes.userName}>{`${name} ${surname}`}</div>

@@ -6,9 +6,24 @@
   "configurations": [
     {
       "type": "node",
+      "request": "launch"
+    },
+    {
+      "type": "node",
+      "request": "attach"
+    },
+    {
+      "name": "Launch localhost",
+      "type": "chrome",
       "request": "launch",
-      "name": "Launch Program",
-      "program": "${workspaceFolder}\\start"
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/wwwroot"
+    },
+    {
+      "name": "Launch index.html",
+      "type": "chrome",
+      "request": "launch",
+      "file": "${workspaceFolder}/index.html"
     }
   ]
 }

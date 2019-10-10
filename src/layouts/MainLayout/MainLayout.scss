@@ -4,19 +4,15 @@
   grid-template-rows: $header-height;
   grid-template-columns:
     minmax(250px, 1fr)
-    minmax(500px, 800px)
+    800px
     minmax(250px, 1fr);
   grid-template-areas:
     "mainHeader mainHeader mainHeader"
     "mainNav mainContent mainConversations";
-  column-gap: 10%;
 }
 .content {
   grid-area: mainContent;
-  margin-top: 20px;
   background-color: $bg-panel-color;
   box-shadow: 2px 0 10px -5px rgba(117, 117, 117, 0.8),
     -2px 0 10px -5px rgba(117, 117, 117, 0.8);
-  border-radius: 7px;
-  overflow: hidden;
 }

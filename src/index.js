@@ -2,6 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./containers/App";
 
-import { state } from "./redux/state";
+import { store } from "./redux/reduxStore";
 
-ReactDOM.render(<App state={state} />, document.getElementById("root"));
+let rerenderEntireTree = state => {
+  ReactDOM.render(
+    <App state={state} dispatch={store.dispatch.bind(store)} />,
+    document.getElementById("root")
+  );
+};
+rerenderEntireTree(store.getState());
+
+store.subscribe(() => {
+  let state = store.getState();
+  rerenderEntireTree(state);
+});

@@ -11,7 +11,7 @@ export const ProfilePage = props => {
       <ProfileBg />
       <div className={classes.profileContent}>
         <ProfileHeader profileData={props.profileData} />
-        <Posts profileData={props.profileData} />
+        <Posts profileData={props.profileData} dispatch={props.dispatch} />
       </div>
     </div>
   );

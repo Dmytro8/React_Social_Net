@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./MainLayout.scss";
 
-import { Header } from "../../containers/HeaderContainers/Header";
+import { Header } from "../../components/Header";
 import { NavBar } from "../../containers/LeftBarContainers/NavBar";
 import { Conversations } from "../../containers/RightBarContainers/Conversations";
 
