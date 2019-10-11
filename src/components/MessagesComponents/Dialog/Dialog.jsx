@@ -1,8 +1,7 @@
 import React from "react";
-// import userImg from "../../static/images/profile-img.jpg";
 
 import classes from "./Dialog.module.scss";
-import { ProfileAvatarMini } from "../ProfileComponents/ProfileAvatarMini";
+import { ProfileAvatarMini } from "../../ProfileComponents/ProfileAvatarMini";
 
 export const Dialog = ({ id, name, surname }) => {
   return (

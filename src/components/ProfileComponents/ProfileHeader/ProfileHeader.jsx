@@ -4,21 +4,18 @@ import classes from "./ProfileHeader.module.scss";
 
 import { PROFILE } from "../../../constants/url";
 
-export const ProfileHeader = ({ profileData }) => {
-  let userImage = profileData.map(profile => (
-    <img
-      src={require(`../../../static/images/${profile.name} ${profile.surname}.jpg`)}
-      alt="profile avatar"
-    />
-  ));
-  let userName = profileData.map(profile => (
-    <h2>{`${profile.name} ${profile.surname}`}</h2>
-  ));
-
+export const ProfileHeader = ({ name, surname }) => {
   return (
     <div>
-      <div className={classes.profileImg}>{userImage}</div>
-      <div className={classes.profileName}>{userName}</div>
+      <div className={classes.profileImg}>
+        <img
+          src={require(`../../../static/images/${name} ${surname}.jpg`)}
+          alt="profile avatar"
+        />
+      </div>
+      <div className={classes.profileName}>
+        <h2>{`${name} ${surname}`}</h2>
+      </div>
       <nav className={classes.profileNav}>
         <ul>
           <li className={classes.navLinks}>

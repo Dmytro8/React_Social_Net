@@ -2,7 +2,7 @@ import React from "react";
 
 import classes from "./Post.module.scss";
 import postImage from "../../../static/images/post-img.jpg";
-import { ProfileAvatarMini } from "../../../components/ProfileComponents/ProfileAvatarMini";
+import { ProfileAvatarMini } from "../ProfileAvatarMini";
 
 export const Post = ({
   name,

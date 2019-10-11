@@ -2,34 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./WhatsNew.module.scss";
 import { ProfileAvatarMini } from "../ProfileAvatarMini";
-import {
-  addPostActionCreator,
-  updateNewPostTestActionCreator
-} from "../../../redux/profileReducer";
 
 import Button from "@material-ui/core/Button";
 
-export const WhatsNew = props => {
-  let addPost = () => {
-    props.dispatch(addPostActionCreator());
-  };
-
-  let onInputPostChange = e => {
-    let text = e.target.value;
-    props.dispatch(updateNewPostTestActionCreator(text));
-  };
-
+export const WhatsNew = ({
+  name,
+  surname,
+  newPostDescription,
+  addPost,
+  updateNewPostText
+}) => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.profileAvatar}>
-        <ProfileAvatarMini name={props.name} surname={props.surname} />
+        <ProfileAvatarMini name={name} surname={surname} />
       </div>
       <div className={classes.inputPost}>
         <textarea
           type="text"
           placeholder="What's new?"
-          value={props.newPostDescription}
-          onChange={onInputPostChange}
+          value={newPostDescription}
+          onChange={updateNewPostText}
         />
       </div>
       <div className={classes.wrapperMedia}>

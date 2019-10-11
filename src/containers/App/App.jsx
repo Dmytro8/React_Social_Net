@@ -5,7 +5,8 @@ import { PROFILE, MESSAGES, NEWS, MUSIC, SETTINGS } from "../../constants/url";
 import { MainLayout } from "../../layouts/MainLayout";
 
 import "./App.scss";
-import { DialogOpen } from "../../components/DialogOpen";
+
+import { DialogOpenContainer } from "../../containers/DialogOpenContainer";
 
 // Import pages
 const ProfilePage = lazy(() => import("../../routes/ProfilePage"));
@@ -14,17 +15,12 @@ const NewsPage = lazy(() => import("../../routes/NewsPage"));
 const MusicPage = lazy(() => import("../../routes/MusicPage"));
 const SettingsPage = lazy(() => import("../../routes/SettingsPage"));
 
-export const App = ({ state, dispatch }) => {
+export const App = ({ store }) => {
+  let state = store.getState();
   let userDataRoutes = state.messagesData.messagesData.map(user => (
     <Route
       exact
-      render={() => (
-        <DialogOpen
-          user={user}
-          dispatch={dispatch}
-          newMessageBody={state.messagesData.newMessageBody}
-        />
-      )}
+      render={() => <DialogOpenContainer store={store} user={user} />}
       path={`${MESSAGES}/${user.name}-${user.surname}`}
     />
   ));
@@ -35,19 +31,12 @@ export const App = ({ state, dispatch }) => {
           <Switch>
             <Route
               exact
-              render={() => (
-                <ProfilePage
-                  profileData={state.profileData}
-                  dispatch={dispatch}
-                />
-              )}
+              render={() => <ProfilePage store={store} />}
               path={PROFILE}
             />
             <Route
               exact
-              render={() => (
-                <MessagesPage userData={state.messagesData.messagesData} />
-              )}
+              render={() => <MessagesPage store={store} />}
               path={MESSAGES}
             />
             {userDataRoutes}

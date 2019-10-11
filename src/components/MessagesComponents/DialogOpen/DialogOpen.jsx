@@ -1,34 +1,23 @@
 import React from "react";
 
 import classes from "./DialogOpen.module.scss";
-import { MESSAGES } from "../../constants/url";
+import { MESSAGES } from "../../../constants/url";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 
 import { NavLink, Link } from "react-router-dom";
-import { ProfileAvatarMini } from "../ProfileComponents/ProfileAvatarMini";
+import { ProfileAvatarMini } from "../../ProfileComponents/ProfileAvatarMini";
 import { Message } from "../Message";
 
-import {
-  sendMessageActionCreator,
-  updateNewMessageTextActionCreator
-} from "../../redux/messagesReducer";
-
-export const DialogOpen = ({ user, dispatch, newMessageBody }) => {
-  let messagesData = user.messages.map(messages => (
-    <Message body={messages.body} />
-  ));
-
-  let onSendMessageEnter = e => {
-    if (e.key === "Enter") {
-      dispatch(sendMessageActionCreator());
-    }
-  };
-
-  let onInputMessageChange = e => {
-    let body = e.target.value;
-    dispatch(updateNewMessageTextActionCreator(body));
-  };
+export const DialogOpen = ({
+  messages,
+  name,
+  surname,
+  newMessageBody,
+  onInputMessageChange,
+  onSendMessageEnter
+}) => {
+  let messagesData = messages.map(messages => <Message body={messages.body} />);
   return (
     <div className={classes.contentWrapper}>
       <div className={classes.topPanel}>
@@ -39,12 +28,12 @@ export const DialogOpen = ({ user, dispatch, newMessageBody }) => {
         </div>
         <div className={classes.userDetails}>
           <div>
-            {user.name} {user.surname}
+            {name} {surname}
           </div>
           <div className={classes.status}>Offline</div>
         </div>
         <div className={classes.userImage}>
-          <ProfileAvatarMini name={user.name} surname={user.surname} />
+          <ProfileAvatarMini name={name} surname={surname} />
         </div>
       </div>
       <div className={classes.messagesContent}>

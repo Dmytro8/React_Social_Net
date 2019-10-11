@@ -4,15 +4,11 @@ import App from "./containers/App";
 
 import { store } from "./redux/reduxStore";
 
-let rerenderEntireTree = state => {
-  ReactDOM.render(
-    <App state={state} dispatch={store.dispatch.bind(store)} />,
-    document.getElementById("root")
-  );
+let rerenderEntireTree = () => {
+  ReactDOM.render(<App store={store} />, document.getElementById("root"));
 };
-rerenderEntireTree(store.getState());
+rerenderEntireTree();
 
 store.subscribe(() => {
-  let state = store.getState();
-  rerenderEntireTree(state);
+  rerenderEntireTree();
 });

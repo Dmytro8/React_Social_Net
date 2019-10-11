@@ -1,17 +1,17 @@
 import React from "react";
 
 import classes from "./ProfilePage.module.scss";
-import { ProfileHeader } from "../../components/ProfileComponents/ProfileHeader";
-import { Posts } from "../../containers/ProfileContainers/Posts";
+import { ProfileHeaderContainer } from "../../containers/ProfileHeaderContainer";
+import { PostsContainer } from "../../containers/PostsContainer";
 import { ProfileBg } from "../../components/ProfileComponents/ProfileBg";
 
-export const ProfilePage = props => {
+export const ProfilePage = ({ store }) => {
   return (
     <div className={classes.wrapper}>
       <ProfileBg />
       <div className={classes.profileContent}>
-        <ProfileHeader profileData={props.profileData} />
-        <Posts profileData={props.profileData} dispatch={props.dispatch} />
+        <ProfileHeaderContainer store={store} />
+        <PostsContainer store={store} />
       </div>
     </div>
   );
