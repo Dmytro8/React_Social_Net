@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 
 import { PROFILE, MESSAGES, NEWS, MUSIC, SETTINGS } from "../../constants/url";
 import { MainLayout } from "../../layouts/MainLayout";
@@ -25,29 +25,23 @@ export const App = ({ store }) => {
     />
   ));
   return (
-    <BrowserRouter>
-      <MainLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Switch>
-            <Route
-              exact
-              render={() => <ProfilePage store={store} />}
-              path={PROFILE}
-            />
-            <Route
-              exact
-              render={() => <MessagesPage store={store} />}
-              path={MESSAGES}
-            />
-            {userDataRoutes}
-            <Route exact component={NewsPage} path={NEWS} />
-            <Route exact component={MusicPage} path={MUSIC} />
-            <Route exact component={SettingsPage} path={SETTINGS} />
+    <MainLayout>
+      <Suspense fallback={<div>Loading...</div>}>
+        {/* <Switch> */}
+        <Route exact component={ProfilePage} path={PROFILE} />
+        <Route
+          exact
+          render={() => <MessagesPage store={store} />}
+          path={MESSAGES}
+        />
+        {userDataRoutes}
+        <Route exact component={NewsPage} path={NEWS} />
+        <Route exact component={MusicPage} path={MUSIC} />
+        <Route exact component={SettingsPage} path={SETTINGS} />
 
-            <Redirect to={PROFILE} />
-          </Switch>
-        </Suspense>
-      </MainLayout>
-    </BrowserRouter>
+        <Redirect to={PROFILE} />
+        {/* </Switch> */}
+      </Suspense>
+    </MainLayout>
   );
 };

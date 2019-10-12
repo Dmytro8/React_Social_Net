@@ -1,5 +1,4 @@
 import React from "react";
-
 import { DialogOpen } from "../../components/MessagesComponents/DialogOpen";
 
 import {
@@ -30,3 +29,11 @@ export const DialogOpenContainer = ({ store, user }) => {
     />
   );
 };
+
+// const mapStateToProps = state => {
+//   return {
+//     name =
+//   }
+// }
+
+// export const DialogOpenContainer = connect()(DialogOpen)

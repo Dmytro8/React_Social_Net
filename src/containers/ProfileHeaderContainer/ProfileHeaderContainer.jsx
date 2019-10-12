@@ -1,10 +1,18 @@
-import React from "react";
 import { ProfileHeader } from "../../components/ProfileComponents/ProfileHeader";
+import { connect } from "react-redux";
 
-export const ProfileHeaderContainer = ({ store }) => {
-  let state = store.getState();
-  let name = state.profileData[0].name;
-  let surname = state.profileData[0].surname;
-
-  return <ProfileHeader name={name} surname={surname} />;
+let mapStateToProps = state => {
+  return {
+    name: state.profileData.name,
+    surname: state.profileData.surname
+  };
 };
+
+let mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export const ProfileHeaderContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileHeader);

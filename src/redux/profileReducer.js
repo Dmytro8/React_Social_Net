@@ -23,84 +23,88 @@ const year = date.getFullYear();
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "ON-INPUT-POST-CHANGE";
 
-let initialState = [
-  {
-    name: "Margot",
-    surname: "Robbie",
-    newPostDescription: "",
-    posts: [
-      {
-        id: 1,
-        postDescription:
-          // eslint-disable-next-line no-multi-str
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero nam cumque quod debitis, \
+let initialState = {
+  name: "Margot",
+  surname: "Robbie",
+  newPostDescription: "",
+  posts: [
+    {
+      id: 1,
+      postDescription:
+        // eslint-disable-next-line no-multi-str
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero nam cumque quod debitis, \
           molestias nesciunt veniam qui nostrum sunt labore!",
-        likesCount: 1923422,
-        time: `${day} ${month} ${year}`
-      },
-      {
-        id: 2,
-        postDescription:
-          // eslint-disable-next-line no-multi-str
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error beatae excepturi, \
+      likesCount: 1923422,
+      time: `${day} ${month} ${year}`
+    },
+    {
+      id: 2,
+      postDescription:
+        // eslint-disable-next-line no-multi-str
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error beatae excepturi, \
           commodi minus asperiores nam delectus, ut, accusantium fugiat totam accusamus sed. \
           Ea id harum veniam voluptas fuga, et qui obcaecati, omnis consequatur fugiat voluptate \
           nam excepturi ipsum corporis quam dolore fugit laboriosam dolor ipsa rerum saepe enim? \
           Sed, excepturi?",
-        likesCount: 45,
-        time: `${day} ${month} ${year}`
-      },
-      {
-        id: 3,
-        postDescription:
-          // eslint-disable-next-line no-multi-str
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error beatae excepturi, \
+      likesCount: 45,
+      time: `${day} ${month} ${year}`
+    },
+    {
+      id: 3,
+      postDescription:
+        // eslint-disable-next-line no-multi-str
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error beatae excepturi, \
           commodi minus asperiores nam delectus, ut, accusantium fugiat totam accusamus sed. \
           Ea id harum veniam voluptas fuga, et qui obcaecati",
-        likesCount: 3,
-        time: `${day} ${month} ${year}`
-      },
-      {
-        id: 4,
-        postDescription:
-          // eslint-disable-next-line no-multi-str
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error beatae excepturi, \
+      likesCount: 3,
+      time: `${day} ${month} ${year}`
+    },
+    {
+      id: 4,
+      postDescription:
+        // eslint-disable-next-line no-multi-str
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error beatae excepturi, \
           commodi minus asperiores nam delectus, ut, accusantium fugiat totam accusamus sed. \
           Ea id harum veniam voluptas fuga, et qui obcaecati",
-        likesCount: 2086,
-        time: `${day} ${month} ${year}`
-      },
-      {
-        id: 5,
-        postDescription:
-          // eslint-disable-next-line no-multi-str
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error beatae excepturi, \
+      likesCount: 2086,
+      time: `${day} ${month} ${year}`
+    },
+    {
+      id: 5,
+      postDescription:
+        // eslint-disable-next-line no-multi-str
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error beatae excepturi, \
           commodi minus asperiores nam delectus, ut, accusantium fugiat totam accusamus sed. \
           Ea id harum veniam voluptas fuga, et qui obcaecati",
-        likesCount: 54673,
-        time: `${day} ${month} ${year}`
-      }
-    ]
-  }
-];
+      likesCount: 54673,
+      time: `${day} ${month} ${year}`
+    }
+  ]
+};
 
 export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       let newPost = {
         id: 6,
-        postDescription: state[0].newPostDescription,
+        postDescription: state.newPostDescription,
         time: `${day} ${month} ${year}`,
         likesCount: 0
       };
-      state[0].posts.unshift(newPost);
-      state[0].newPostDescription = "";
+      let stateCopy = { ...state };
+      stateCopy.posts = [...state.posts];
+      stateCopy.posts.unshift(newPost);
+      stateCopy.newPostDescription = "";
+      return stateCopy;
+    }
+    case UPDATE_NEW_POST_TEXT: {
+      let stateCopy = { ...state };
+      stateCopy.newPostDescription = action.postMessage;
+      return stateCopy;
+    }
+    default: {
       return state;
-    case UPDATE_NEW_POST_TEXT:
-      state[0].newPostDescription = action.postMessage;
-      return state;
-    default:
-      return state;
+    }
   }
 };
 

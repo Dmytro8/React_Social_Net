@@ -5,13 +5,13 @@ import { ProfileHeaderContainer } from "../../containers/ProfileHeaderContainer"
 import { PostsContainer } from "../../containers/PostsContainer";
 import { ProfileBg } from "../../components/ProfileComponents/ProfileBg";
 
-export const ProfilePage = ({ store }) => {
+export const ProfilePage = () => {
   return (
     <div className={classes.wrapper}>
       <ProfileBg />
       <div className={classes.profileContent}>
-        <ProfileHeaderContainer store={store} />
-        <PostsContainer store={store} />
+        <ProfileHeaderContainer />
+        <PostsContainer />
       </div>
     </div>
   );
