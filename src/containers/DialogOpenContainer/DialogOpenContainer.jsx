@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import { DialogOpen } from "../../components/MessagesComponents/DialogOpen";
 
 import {
@@ -6,34 +8,50 @@ import {
   updateNewMessageTextActionCreator
 } from "../../redux/messagesReducer";
 
-export const DialogOpenContainer = ({ store, user }) => {
-  let state = store.getState();
+export const DialogOpenContainerRaw = ({
+  store,
+  user,
+  sendMessageActionCreator,
+  updateNewMessageTextActionCreator
+}) => {
   let onSendMessageEnter = e => {
     if (e.key === "Enter") {
-      store.dispatch(sendMessageActionCreator());
+      sendMessageActionCreator();
     }
   };
 
   let onInputMessageChange = e => {
     let body = e.target.value;
-    store.dispatch(updateNewMessageTextActionCreator(body));
+    updateNewMessageTextActionCreator(body);
   };
   return (
     <DialogOpen
       name={user.name}
       surname={user.surname}
       messages={user.messages}
-      newMessageBody={state.messagesData.newMessageBody}
+      newMessageBody={store.messagesData.newMessageBody}
       onSendMessageEnter={onSendMessageEnter}
       onInputMessageChange={onInputMessageChange}
     />
   );
 };
 
-// const mapStateToProps = state => {
-//   return {
-//     name =
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    store: state
+  };
+};
 
-// export const DialogOpenContainer = connect()(DialogOpen)
+const mapDispatchToProps = dispatch => {
+  return {
+    sendMessageActionCreator: payload =>
+      dispatch(sendMessageActionCreator(payload)),
+    updateNewMessageTextActionCreator: payload =>
+      dispatch(updateNewMessageTextActionCreator(payload))
+  };
+};
+
+export const DialogOpenContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DialogOpenContainerRaw);
