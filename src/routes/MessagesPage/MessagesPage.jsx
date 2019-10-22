@@ -7,11 +7,16 @@ import { Dialog } from "../../components/MessagesComponents/Dialog/Dialog";
 import { MESSAGES } from "../../constants/url";
 
 export const MessagesPage = ({ state }) => {
-  let userData = state.messagesData.messagesData.map(user => (
-    <NavLink className={classes.dialogLink} to={`${MESSAGES}/${user.id}`}>
-      <Dialog id={user.id} name={user.name} surname={user.surname} />
-    </NavLink>
-  ));
+  let userData = state.usersData.usersData.map(user => {
+    if (user.followed === true) {
+      return (
+        <NavLink className={classes.dialogLink} to={`${MESSAGES}/${user.id}`}>
+          <Dialog id={user.id} name={user.name} surname={user.surname} />
+        </NavLink>
+      );
+    }
+    return null;
+  });
 
   return (
     <div>

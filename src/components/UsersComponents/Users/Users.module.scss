@@ -1,0 +1,74 @@
+@import "../../../styles/_vars.scss";
+.inputSearch {
+  position: fixed;
+  width: 800px;
+  border-bottom: 1px solid silver;
+  input {
+    padding-left: 20px;
+    width: 780px;
+    line-height: 50px;
+    font-size: 16px;
+    background-color: $bg-panel-color;
+    border: none;
+  }
+  :focus {
+    background-color: aliceblue;
+    outline: 0;
+  }
+}
+.usersWrapper {
+  padding-top: 50px;
+}
+.userWrapper {
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  border-top: 1px solid silver;
+}
+.userAvatar {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.avatarImg {
+  width: 80px;
+  height: 80px;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+  }
+}
+.button {
+  padding: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all 0.3s linear;
+}
+#unfollowedButton {
+}
+#followedButton {
+  color: $accent-color;
+}
+.userName {
+  margin-top: 10px;
+  font-size: 16px;
+}
+.userTitle {
+  margin-top: 3px;
+  font-size: 15px;
+  color: #555;
+}
+.writeMessage {
+  color: $accent-color;
+  font-size: 17px;
+  margin-top: 10px;
+}
+.userAction {
+  display: grid;
+  justify-content: center;
+}

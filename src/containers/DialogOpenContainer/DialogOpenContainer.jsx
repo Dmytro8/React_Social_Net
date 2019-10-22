@@ -6,7 +6,7 @@ import { DialogOpen } from "../../components/MessagesComponents/DialogOpen";
 import {
   sendMessageActionCreator,
   updateNewMessageTextActionCreator
-} from "../../redux/messagesReducer";
+} from "../../redux/usersReducer";
 
 export const DialogOpenContainerRaw = ({
   store,
@@ -29,7 +29,7 @@ export const DialogOpenContainerRaw = ({
       name={user.name}
       surname={user.surname}
       messages={user.messages}
-      newMessageBody={store.messagesData.newMessageBody}
+      newMessageBody={store.usersData.newMessageBody}
       onSendMessageEnter={onSendMessageEnter}
       onInputMessageChange={onInputMessageChange}
     />

@@ -1,5 +1,5 @@
 import { profileReducer } from "./profileReducer";
-import { messagesReducer } from "./messagesReducer";
+import { messagesReducer } from "./usersReducer";
 
 const date = new Date();
 const months = [

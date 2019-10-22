@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import classes from "./NavLinks.module.scss";
 import {
   PROFILE,
-  PEOPLE,
+  USERS,
   MESSAGES,
   NEWS,
   MUSIC,
@@ -39,10 +39,10 @@ export const NavLinks = () => {
           {/* eslint-disable-next-line */}
           <NavLink
             className={classes.aLink}
-            to={PEOPLE}
+            to={USERS}
             activeClassName={classes.selected}
           >
-            People
+            Users
           </NavLink>
         </li>
         <li className={classes.navLinks}>
