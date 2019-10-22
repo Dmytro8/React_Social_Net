@@ -38,6 +38,16 @@ export const NavLinks = () => {
           {/* eslint-disable-next-line */}
           <NavLink
             className={classes.aLink}
+            to={MESSAGES}
+            activeClassName={classes.selected}
+          >
+            People
+          </NavLink>
+        </li>
+        <li className={classes.navLinks}>
+          {/* eslint-disable-next-line */}
+          <NavLink
+            className={classes.aLink}
             to={NEWS}
             activeClassName={classes.selected}
           >
