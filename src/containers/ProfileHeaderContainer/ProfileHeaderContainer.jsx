@@ -3,16 +3,9 @@ import { connect } from "react-redux";
 
 let mapStateToProps = state => {
   return {
-    name: state.profileData.name,
-    surname: state.profileData.surname
+    name: state.profileData.profile.name,
+    surname: state.profileData.profile.surname
   };
 };
 
-let mapDispatchToProps = dispatch => {
-  return {};
-};
-
-export const ProfileHeaderContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProfileHeader);
+export const ProfileHeaderContainer = connect(mapStateToProps)(ProfileHeader);

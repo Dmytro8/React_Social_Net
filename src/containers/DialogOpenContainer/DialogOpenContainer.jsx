@@ -4,32 +4,32 @@ import { connect } from "react-redux";
 import { DialogOpen } from "../../components/MessagesComponents/DialogOpen";
 
 import {
-  sendMessageActionCreator,
-  updateNewMessageTextActionCreator
+  sendMessageAC,
+  updateNewMessageTextAC
 } from "../../redux/usersReducer";
 
 export const DialogOpenContainerRaw = ({
-  store,
   user,
-  sendMessageActionCreator,
-  updateNewMessageTextActionCreator
+  usersData,
+  sendMessageAC,
+  updateNewMessageTextAC
 }) => {
   let onSendMessageEnter = e => {
     if (e.key === "Enter") {
-      sendMessageActionCreator();
+      sendMessageAC(user.id);
     }
   };
 
   let onInputMessageChange = e => {
     let body = e.target.value;
-    updateNewMessageTextActionCreator(body);
+    updateNewMessageTextAC(body);
   };
   return (
     <DialogOpen
       name={user.name}
       surname={user.surname}
       messages={user.messages}
-      newMessageBody={store.usersData.newMessageBody}
+      newMessageBody={usersData.newMessageBody}
       onSendMessageEnter={onSendMessageEnter}
       onInputMessageChange={onInputMessageChange}
     />
@@ -38,16 +38,18 @@ export const DialogOpenContainerRaw = ({
 
 const mapStateToProps = state => {
   return {
-    store: state
+    usersData: state.usersData
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    sendMessageActionCreator: payload =>
-      dispatch(sendMessageActionCreator(payload)),
-    updateNewMessageTextActionCreator: payload =>
-      dispatch(updateNewMessageTextActionCreator(payload))
+    sendMessageAC: userId => {
+      dispatch(sendMessageAC(userId));
+    },
+    updateNewMessageTextAC: text => {
+      dispatch(updateNewMessageTextAC(text));
+    }
   };
 };
 

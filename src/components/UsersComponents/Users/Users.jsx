@@ -1,26 +1,25 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { MESSAGES } from "../../../constants/url";
-
+import { MESSAGES, PROFILE } from "../../../constants/url";
 import classes from "./Users.module.scss";
 
 export const Users = props => {
   return (
     <div>
-      <div className={classes.inputSearch}>
-        <input type="text" placeholder="Search" />
-      </div>
       <div className={classes.usersWrapper}>
         {props.users.map(user => (
           <div key={user.id} className={classes.userWrapper}>
             <div className={classes.userAvatar}>
-              <div className={classes.avatarImg}>
-                <img
-                  src={require(`../../../static/images/${user.name} ${user.surname}.jpg`)}
-                  alt="user"
-                />
-              </div>
+              <NavLink to={`${PROFILE}/${user.id}`}>
+                {/* <NavLink to={`${PROFILE}`}> */}
+                <div className={classes.avatarImg}>
+                  <img
+                    src={require(`../../../static/images/${user.name} ${user.surname}.jpg`)}
+                    alt="user"
+                  />
+                </div>
+              </NavLink>
             </div>
             <div className={classes.userDescription}>
               <div className={classes.userName}>
@@ -42,7 +41,7 @@ export const Users = props => {
                   id={classes.followedButton}
                   className={classes.button}
                   onClick={() => {
-                    props.unFollow(user.id);
+                    props.unfollow(user.id);
                   }}
                 >
                   Follow

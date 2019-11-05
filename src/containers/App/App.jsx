@@ -2,12 +2,15 @@ import React, { lazy, Suspense } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 
 import {
+  MAIN,
   PROFILE,
   MESSAGES,
   USERS,
   NEWS,
   MUSIC,
-  SETTINGS
+  SETTINGS,
+  REGISTRATION,
+  LOGIN
 } from "../../constants/url";
 import { MainLayout } from "../../layouts/MainLayout";
 
@@ -16,6 +19,11 @@ import { connect } from "react-redux";
 import "./App.scss";
 
 import { DialogOpenContainer } from "../../containers/DialogOpenContainer";
+import { Preloader } from "../../components/Preloader";
+import { AuthLayout } from "../../layouts/AuthLayout";
+import { AuthenticationPage } from "../../routes/AuthenticationPage";
+import { LoginForm } from "../../components/AuthenticationForms/LoginForm";
+import { RegistrationForm } from "../../components/AuthenticationForms/RegistrationForm";
 
 // Import pages
 const ProfilePage = lazy(() => import("../../routes/ProfilePage"));
@@ -33,26 +41,59 @@ export const AppRaw = ({ state }) => {
       path={`${MESSAGES}/${user.id}`}
     />
   ));
-  return (
-    <MainLayout>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          <Route exact component={ProfilePage} path={PROFILE} />
-          <Route
-            exact
-            render={() => <MessagesPage state={state} />}
-            path={MESSAGES}
-          />
-          <Route exact component={UsersPage} path={USERS} />
-          {userDataRoutes}
-          <Route exact component={NewsPage} path={NEWS} />
-          <Route exact component={MusicPage} path={MUSIC} />
-          <Route exact component={SettingsPage} path={SETTINGS} />
 
-          <Redirect to={PROFILE} />
-        </Switch>
-      </Suspense>
-    </MainLayout>
+  const spinnerStyle = {
+    position: "fixed",
+    left: "50%",
+    top: "50%",
+    marginLeft: "-20px",
+    marginTop: "-20px"
+  };
+
+  return (
+    <>
+      <AuthLayout>
+        <Suspense
+          fallback={
+            <div style={spinnerStyle}>
+              <Preloader />
+            </div>
+          }
+        >
+          <Switch>
+            <Route exact component={AuthenticationPage} path={MAIN} />
+            <Route exact component={LoginForm} path={LOGIN} />
+            <Route exact component={RegistrationForm} path={REGISTRATION} />
+          </Switch>
+        </Suspense>
+      </AuthLayout>
+
+      {/* <MainLayout>
+        <Suspense
+          fallback={
+            <div style={spinnerStyle}>
+              <Preloader />
+            </div>
+          }
+        >
+          <Switch>
+            <Route component={ProfilePage} path={`${PROFILE}/:userId?`} />
+            <Route
+              exact
+              render={() => <MessagesPage state={state} />}
+              path={MESSAGES}
+            />
+            <Route exact component={UsersPage} path={USERS} />
+            {userDataRoutes}
+            <Route exact component={NewsPage} path={NEWS} />
+            <Route exact component={MusicPage} path={MUSIC} />
+            <Route exact component={SettingsPage} path={SETTINGS} />
+
+            <Redirect to={PROFILE} />
+          </Switch>
+        </Suspense>
+      </MainLayout> */}
+    </>
   );
 };
 

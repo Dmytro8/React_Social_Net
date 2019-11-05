@@ -9,8 +9,8 @@ export const Posts = ({
   surname,
   newPostDescription,
   posts,
-  onAddPost,
-  onInputPostChange
+  addPost,
+  updateNewPostText
 }) => {
   let postData = posts.map(post => (
     <div className={classes.postWrapper}>
@@ -24,14 +24,6 @@ export const Posts = ({
       />
     </div>
   ));
-
-  let addPost = () => {
-    onAddPost();
-  };
-  let updateNewPostText = e => {
-    let body = e.target.value;
-    onInputPostChange(body);
-  };
 
   return (
     <div className={classes.wrapper}>

@@ -22,7 +22,9 @@ export const WhatsNew = ({
           type="text"
           placeholder="What's new?"
           value={newPostDescription}
-          onChange={updateNewPostText}
+          onChange={e => {
+            updateNewPostText(e.target.value);
+          }}
         />
       </div>
       <div className={classes.wrapperMedia}>

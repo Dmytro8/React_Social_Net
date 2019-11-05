@@ -1,4 +1,7 @@
-export const PROFILE = "/id_user";
+export const MAIN = "/";
+export const LOGIN = "/login";
+export const REGISTRATION = "/registration";
+export const PROFILE = "/profile";
 export const USERS = "/users";
 export const MESSAGES = "/messages";
 export const NEWS = "/news";
