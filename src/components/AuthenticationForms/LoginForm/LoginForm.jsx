@@ -1,24 +1,57 @@
 import React from "react";
+import axios from "axios";
 
 import classes from "./LoginForm.module.scss";
 
 import { NavLink } from "react-router-dom";
 import { REGISTRATION } from "../../../constants/url";
 
-export const LoginForm = () => {
+export const LoginForm = ({
+  email,
+  password,
+  updateLoginField,
+  updatePasswordField,
+  updateAuthorize,
+  setUserProfile,
+  toggleIsProfileFetching
+}) => {
+  let login = () => {
+    axios
+      .get(`http://127.0.0.1:5000/auth/me/${email}-${password}`)
+      .then(response => {
+        setUserProfile(response.data);
+        updateAuthorize();
+        toggleIsProfileFetching(false);
+      });
+  };
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.header}>
         <h1 className={classes.headerText}>Sign In</h1>
       </div>
-      <div className={classes.inputEmail}>
-        <input type="email" placeholder="Email..." value="" />
+      <div className={classes.formInputs}>
+        <input
+          type="email"
+          placeholder="Email..."
+          value={email}
+          onChange={e => {
+            updateLoginField(e.target.value);
+          }}
+        />
       </div>
-      <div className={classes.inputPassword}>
-        <input type="password" placeholder="Password..." value="" />
+      <div className={classes.formInputs}>
+        <input
+          type="password"
+          placeholder="Password..."
+          value={password}
+          onChange={e => {
+            updatePasswordField(e.target.value);
+          }}
+        />
       </div>
       <div className={classes.buttonSignIn}>
-        <button>Sign In</button>
+        <button onClick={login}>Sign In</button>
       </div>
       <div className={classes.optionsText}>
         <h4>Or login with</h4>

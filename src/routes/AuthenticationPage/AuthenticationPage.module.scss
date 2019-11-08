@@ -9,23 +9,25 @@
   font-size: 20px;
   margin: 40px 0 40px 0;
 }
-button {
-  border: none;
-  width: 300px;
-  height: 50px;
-  background: rgb(3, 169, 244);
-  color: white;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-size: 15px;
-  box-shadow: 0 3px 10px #ccc, 3px 3px 10px #ccc, -3px 3px 10px #ccc;
-}
+
 .button {
   margin: 20px 0 20px 0;
   :focus {
     background: rgb(0, 152, 223);
   }
+  button {
+    border: none;
+    width: 300px;
+    height: 50px;
+    background: rgb(3, 169, 244);
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 15px;
+    box-shadow: 0 3px 10px #ccc, 3px 3px 10px #ccc, -3px 3px 10px #ccc;
+  }
 }
+
 .text {
   color: rgb(80, 80, 80);
   margin-bottom: 10px;

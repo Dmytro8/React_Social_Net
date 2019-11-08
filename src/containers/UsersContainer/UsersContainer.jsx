@@ -17,11 +17,23 @@ class UsersContainer extends React.Component {
   componentDidMount() {
     axios.get("http://127.0.0.1:5000/users").then(response => {
       this.props.toggleIsFetching(false);
-      this.props.setUsers(response.data.users);
+
+      let usersFilter = response.data.users.filter(
+        user => user.id !== parseInt(this.props.profileId, 10)
+      );
+      debugger;
+      this.props.setUsers(usersFilter);
     });
   }
 
+  // filterUser() {
+  //   debugger;
+
+  //   return usersFilter;
+  // }
+
   render() {
+    // let users = this.filterUser();
     return (
       <>
         <SearchPanel />
@@ -29,12 +41,13 @@ class UsersContainer extends React.Component {
           <div className={classes.spinner}>
             <Preloader />
           </div>
-        ) : null}
-        <Users
-          users={this.props.users}
-          follow={this.props.follow}
-          unfollow={this.props.unfollow}
-        />
+        ) : (
+          <Users
+            users={this.props.users}
+            follow={this.props.follow}
+            unfollow={this.props.unfollow}
+          />
+        )}
       </>
     );
   }
@@ -42,6 +55,7 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = state => {
   return {
+    profileId: state.profileData.profile.id,
     users: state.usersData.usersData,
     isFetching: state.usersData.isFetching
   };

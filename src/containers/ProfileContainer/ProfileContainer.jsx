@@ -21,18 +21,20 @@ import { withRouter } from "react-router";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.match.params.userId;
-    if (!userId) {
-      userId = 99;
-    }
-    axios.get(`http://127.0.0.1:5000/profile/${userId}`).then(response => {
-      this.props.setUserProfile(response.data);
-      this.props.toggleIsProfileFetching(false);
-    });
+    // let userId = this.props.match.params.userId;
+    // if (!userId) {
+    //   userId = 99;
+    // }
+    // debugger;
+    // axios
+    //   .get(`http://127.0.0.1:5000/profile/${this.props.userId}`)
+    //   .then(response => {
+    //     this.props.setUserProfile(response.data);
+    //     this.props.toggleIsProfileFetching(false);
+    //   });
   }
 
   render() {
-    // debugger;
     return (
       <>
         {this.props.isProfileFetching ? (
@@ -66,6 +68,7 @@ class ProfileContainer extends React.Component {
 }
 
 let mapStateToProps = state => ({
+  userId: state.authData.userId,
   profile: state.profileData.profile,
   isProfileFetching: state.profileData.isProfileFetching
 });
