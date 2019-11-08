@@ -1,6 +1,3 @@
-import axios from "axios";
-// import { setUserProfile } from "./profileReducer";
-
 const UPDATE_LOGIN_FIELD = "UPDATE_LOGIN_FIELD";
 const UPDATE_PASSWORD_FIELD = "UPDATE_PASSWORD_FIELD";
 const UPDATE_AUTHORIZE = "UPDATE_AUTHORIZE";

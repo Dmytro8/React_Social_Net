@@ -1,10 +1,10 @@
 import React from "react";
-import axios from "axios";
 
 import classes from "./LoginForm.module.scss";
 
 import { NavLink } from "react-router-dom";
 import { REGISTRATION } from "../../../constants/url";
+import { authAPI } from "../../../api/authApi";
 
 export const LoginForm = ({
   email,
@@ -16,13 +16,11 @@ export const LoginForm = ({
   toggleIsProfileFetching
 }) => {
   let login = () => {
-    axios
-      .get(`http://127.0.0.1:5000/auth/me/${email}-${password}`)
-      .then(response => {
-        setUserProfile(response.data);
-        updateAuthorize();
-        toggleIsProfileFetching(false);
-      });
+    authAPI.signIn(email, password).then(response => {
+      setUserProfile(response);
+      updateAuthorize();
+      toggleIsProfileFetching(false);
+    });
   };
 
   return (

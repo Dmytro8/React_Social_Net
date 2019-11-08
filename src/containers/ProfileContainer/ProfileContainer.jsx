@@ -2,10 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 import classes from "./ProfileContainer.module.scss";
-import axios from "axios";
-
-import { ProfileHeaderContainer } from "../../containers/ProfileHeaderContainer";
-import { PostsContainer } from "../../containers/PostsContainer";
 import { ProfileBg } from "../../components/ProfileComponents/ProfileBg";
 
 import {

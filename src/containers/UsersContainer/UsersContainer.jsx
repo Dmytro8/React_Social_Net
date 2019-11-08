@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import axios from "axios";
 
 import {
   follow,
@@ -12,28 +11,21 @@ import { Users } from "../../components/UsersComponents/Users";
 import { Preloader } from "../../components/Preloader";
 import { SearchPanel } from "../../components/SearchPanel";
 import classes from "./UsersContainer.module.scss";
+import { usersAPI } from "../../api/usersApi";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    axios.get("http://127.0.0.1:5000/users").then(response => {
+    usersAPI.getUsers().then(response => {
       this.props.toggleIsFetching(false);
 
-      let usersFilter = response.data.users.filter(
+      let usersFilter = response.users.filter(
         user => user.id !== parseInt(this.props.profileId, 10)
       );
       debugger;
       this.props.setUsers(usersFilter);
     });
   }
-
-  // filterUser() {
-  //   debugger;
-
-  //   return usersFilter;
-  // }
-
   render() {
-    // let users = this.filterUser();
     return (
       <>
         <SearchPanel />
