@@ -1,29 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import {
-  follow,
-  unfollow,
-  setUsers,
-  toggleIsFetching
-} from "../../redux/usersReducer";
+import { follow, unfollow, getUsers } from "../../redux/usersReducer";
 import { Users } from "../../components/UsersComponents/Users";
 import { Preloader } from "../../components/Preloader";
 import { SearchPanel } from "../../components/SearchPanel";
 import classes from "./UsersContainer.module.scss";
-import { usersAPI } from "../../api/usersApi";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    usersAPI.getUsers().then(response => {
-      this.props.toggleIsFetching(false);
-
-      let usersFilter = response.users.filter(
-        user => user.id !== parseInt(this.props.profileId, 10)
-      );
-      debugger;
-      this.props.setUsers(usersFilter);
-    });
+    this.props.getUsers(this.props.profileId);
   }
   render() {
     return (
@@ -75,7 +61,6 @@ export default connect(
   {
     follow,
     unfollow,
-    setUsers,
-    toggleIsFetching
+    getUsers
   }
 )(UsersContainer);

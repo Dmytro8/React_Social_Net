@@ -5,12 +5,9 @@ import { connect } from "react-redux";
 import {
   updateLoginField,
   updatePasswordField,
-  updateAuthorize
+  toggleAuthorize,
+  loginRequest
 } from "../../../redux/authReducer";
-import {
-  setUserProfile,
-  toggleIsProfileFetching
-} from "../../../redux/profileReducer";
 
 const LoginFormContainer = props => {
   return (
@@ -19,9 +16,7 @@ const LoginFormContainer = props => {
       password={props.password}
       updateLoginField={props.updateLoginField}
       updatePasswordField={props.updatePasswordField}
-      updateAuthorize={props.updateAuthorize}
-      setUserProfile={props.setUserProfile}
-      toggleIsProfileFetching={props.toggleIsProfileFetching}
+      loginRequest={props.loginRequest}
     />
   );
 };
@@ -38,8 +33,7 @@ export default connect(
   {
     updateLoginField,
     updatePasswordField,
-    updateAuthorize,
-    setUserProfile,
-    toggleIsProfileFetching
+    toggleAuthorize,
+    loginRequest
   }
 )(LoginFormContainer);

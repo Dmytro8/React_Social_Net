@@ -1,0 +1,27 @@
+@import "../../styles/_vars.scss";
+.header {
+  grid-area: mainHeader;
+  background-color: $accent-color;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.wrapper {
+  height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: 100%;
+}
+.wrapperLogo {
+  height: 100%;
+  img {
+    height: 100%;
+    width: 60px;
+  }
+}
+.profileSection {
+  display: grid;
+  justify-self: right;
+  margin-right: 20px;
+  align-self: center;
+}

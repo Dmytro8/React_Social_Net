@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/usersApi";
+
 const SEND_MESSAGE = "SEND-MESSAGE";
 const UPDATE_NEW_MESSAGE_TEXT = "ON-INPUT-MESSAGE-CHANGE";
 const FOLLOW = "FOLLOW";
@@ -82,3 +84,15 @@ export const toggleIsFetching = iFetching => ({
   type: TOGGLE_IS_FETCHING,
   iFetching
 });
+
+export const getUsers = profileId => {
+  return dispatch => {
+    usersAPI.getUsers().then(response => {
+      dispatch(toggleIsFetching(false));
+      let usersFilter = response.users.filter(
+        user => user.id !== parseInt(profileId, 10)
+      );
+      dispatch(setUsers(usersFilter));
+    });
+  };
+};

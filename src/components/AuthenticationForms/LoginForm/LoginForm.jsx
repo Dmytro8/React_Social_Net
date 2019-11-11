@@ -2,32 +2,15 @@ import React from "react";
 
 import classes from "./LoginForm.module.scss";
 
-import { NavLink } from "react-router-dom";
-import { REGISTRATION } from "../../../constants/url";
-import { authAPI } from "../../../api/authApi";
-
 export const LoginForm = ({
   email,
   password,
   updateLoginField,
   updatePasswordField,
-  updateAuthorize,
-  setUserProfile,
-  toggleIsProfileFetching
+  loginRequest
 }) => {
-  let login = () => {
-    authAPI.signIn(email, password).then(response => {
-      setUserProfile(response);
-      updateAuthorize();
-      toggleIsProfileFetching(false);
-    });
-  };
-
   return (
-    <div className={classes.wrapper}>
-      <div className={classes.header}>
-        <h1 className={classes.headerText}>Sign In</h1>
-      </div>
+    <form action="">
       <div className={classes.formInputs}>
         <input
           type="email"
@@ -48,8 +31,12 @@ export const LoginForm = ({
           }}
         />
       </div>
+      <div className={classes.rememberMe}>
+        <input type="checkbox" />
+        <span className={classes.rememberMeCheckMark}>remember me</span>
+      </div>
       <div className={classes.buttonSignIn}>
-        <button onClick={login}>Sign In</button>
+        <button onClick={() => loginRequest(email, password)}>Sign In</button>
       </div>
       <div className={classes.optionsText}>
         <h4>Or login with</h4>
@@ -72,11 +59,6 @@ export const LoginForm = ({
           </button>
         </div>
       </div>
-      <div className={classes.signUp}>
-        <NavLink to={REGISTRATION}>
-          <h4>Sign Up</h4>
-        </NavLink>
-      </div>
-    </div>
+    </form>
   );
 };

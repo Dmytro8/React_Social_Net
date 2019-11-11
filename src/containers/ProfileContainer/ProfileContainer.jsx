@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 
 import classes from "./ProfileContainer.module.scss";
 import { ProfileBg } from "../../components/ProfileComponents/ProfileBg";
@@ -19,9 +20,8 @@ class ProfileContainer extends React.Component {
   componentDidMount() {
     // let userId = this.props.match.params.userId;
     // if (!userId) {
-    //   userId = 99;
+    //   userId = 10;
     // }
-    // debugger;
     // axios
     //   .get(`http://127.0.0.1:5000/profile/${this.props.userId}`)
     //   .then(response => {
@@ -45,6 +45,7 @@ class ProfileContainer extends React.Component {
               <ProfileHeader
                 name={this.props.profile.name}
                 surname={this.props.profile.surname}
+                status={this.props.profile.status}
               />
               {/* <PostsContainer /> */}
               <Posts
@@ -73,5 +74,10 @@ let WithUrlDataProfileContainer = withRouter(ProfileContainer);
 
 export default connect(
   mapStateToProps,
-  { addPost, updateNewPostText, setUserProfile, toggleIsProfileFetching }
+  {
+    addPost,
+    updateNewPostText,
+    setUserProfile,
+    toggleIsProfileFetching
+  }
 )(WithUrlDataProfileContainer);

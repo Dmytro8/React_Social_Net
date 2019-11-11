@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import classes from "./ProfileHeader.module.scss";
 
 import { PROFILE } from "../../../constants/url";
+import { ProfileStatus } from "../ProfileStatus";
 
-export const ProfileHeader = ({ name, surname }) => {
+export const ProfileHeader = ({ name, surname, status }) => {
   return (
     <div>
       <div className={classes.profileImg}>
@@ -13,8 +14,13 @@ export const ProfileHeader = ({ name, surname }) => {
           alt="profile avatar"
         />
       </div>
-      <div className={classes.profileName}>
-        <h2>{`${name} ${surname}`}</h2>
+      <div className={classes.statusBar}>
+        <div className={classes.wrapperStatus}>
+          <div>
+            <h3>{`${name} ${surname}`}</h3>
+          </div>
+          <ProfileStatus status={status} />
+        </div>
       </div>
       <nav className={classes.profileNav}>
         <ul>
