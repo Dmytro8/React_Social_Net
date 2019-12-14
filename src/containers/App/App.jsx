@@ -22,8 +22,8 @@ import { DialogOpenContainer } from "../../containers/DialogOpenContainer";
 import { Preloader } from "../../components/Preloader";
 import { AuthLayout } from "../../layouts/AuthLayout";
 import { AuthenticationPage } from "../../routes/AuthenticationPages/AuthenticationPage";
-import { RegistrationForm } from "../../components/AuthenticationForms/RegistrationForm";
-import { LoginFormContainer } from "../AuthenticationContainers/LoginFormContainer";
+// import { RegistrationForm } from "../../components/AuthenticationForms/RegistrationForm";
+// import { LoginFormContainer } from "../AuthenticationContainers/LoginFormContainer";
 import { LoginPage } from "../../routes/AuthenticationPages/LoginPage";
 import { RegistrationPage } from "../../routes/AuthenticationPages/RegistrationPage";
 

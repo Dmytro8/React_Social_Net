@@ -4,16 +4,9 @@ import classes from "./Posts.module.scss";
 import { Post } from "../Post/Post";
 import { WhatsNew } from "../WhatsNew";
 
-export const Posts = ({
-  name,
-  surname,
-  newPostDescription,
-  posts,
-  addPost,
-  updateNewPostText
-}) => {
+export const Posts = ({ name, surname, posts, addPost }) => {
   let postData = posts.map(post => (
-    <div className={classes.postWrapper}>
+    <div className={classes.postWrapper} key={post.id}>
       <Post
         name={name}
         surname={surname}
@@ -24,16 +17,9 @@ export const Posts = ({
       />
     </div>
   ));
-
   return (
     <div className={classes.wrapper}>
-      <WhatsNew
-        name={name}
-        surname={surname}
-        newPostDescription={newPostDescription}
-        addPost={addPost}
-        updateNewPostText={updateNewPostText}
-      />
+      <WhatsNew name={name} surname={surname} addPost={addPost} />
       <div>
         <span className={classes.separateLine}></span>
       </div>

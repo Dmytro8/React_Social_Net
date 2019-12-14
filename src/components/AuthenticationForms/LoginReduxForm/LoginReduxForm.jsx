@@ -1,42 +1,35 @@
 import React from "react";
+import { reduxForm, Field } from "redux-form";
 
-import classes from "./LoginForm.module.scss";
+import classes from "./LoginReduxForm.module.scss";
 
-export const LoginForm = ({
-  email,
-  password,
-  updateLoginField,
-  updatePasswordField,
-  loginRequest
-}) => {
+const LoginForm = props => {
   return (
-    <form action="">
+    <form action="" onSubmit={props.handleSubmit}>
       <div className={classes.formInputs}>
-        <input
+        <Field
           type="email"
           placeholder="Email..."
-          value={email}
-          onChange={e => {
-            updateLoginField(e.target.value);
-          }}
+          name="email"
+          component="input"
         />
       </div>
       <div className={classes.formInputs}>
-        <input
+        <Field
           type="password"
           placeholder="Password..."
-          value={password}
-          onChange={e => {
-            updatePasswordField(e.target.value);
-          }}
+          name="password"
+          component="input"
         />
       </div>
       <div className={classes.rememberMe}>
-        <input type="checkbox" />
+        {/* <input type="checkbox" /> */}
+        <Field component="input" type="checkbox" name="rememberMe" />
         <span className={classes.rememberMeCheckMark}>remember me</span>
       </div>
       <div className={classes.buttonSignIn}>
-        <button onClick={() => loginRequest(email, password)}>Sign In</button>
+        {/* <button onClick={() => loginRequest(email, password)}>Sign In</button> */}
+        <button>Sign In</button>
       </div>
       <div className={classes.optionsText}>
         <h4>Or login with</h4>
@@ -62,3 +55,7 @@ export const LoginForm = ({
     </form>
   );
 };
+
+export const LoginReduxForm = reduxForm({
+  form: "login"
+})(LoginForm);

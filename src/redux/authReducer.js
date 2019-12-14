@@ -57,7 +57,7 @@ export const toggleAuthorize = booleanVar => ({
 
 export const loginRequest = (email, password) => {
   return dispatch => {
-    authAPI.signIn(email, password).then(response => {
+    authAPI.login(email, password).then(response => {
       dispatch(setUserProfile(response));
       dispatch(toggleAuthorize(true));
       dispatch(toggleIsProfileFetching(false));

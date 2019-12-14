@@ -1,11 +1,14 @@
 import React from "react";
+import { reduxForm, Field, reset } from "redux-form";
+import { NavLink, Link } from "react-router-dom";
 
 import classes from "./DialogOpen.module.scss";
+
 import { MESSAGES } from "../../../constants/url";
+
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 
-import { NavLink, Link } from "react-router-dom";
 import { ProfileAvatarMini } from "../../ProfileComponents/ProfileAvatarMini";
 import { Message } from "../Message";
 
@@ -16,6 +19,11 @@ export class DialogOpen extends React.Component {
   componentDidUpdate() {
     window.scrollTo(0, document.body.scrollHeight);
   }
+
+  addNewMessage = values => {
+    this.props.sendMessage(this.props.userId, values.newMessageBody);
+  };
+
   render() {
     return (
       <div className={classes.contentWrapper}>
@@ -55,12 +63,7 @@ export class DialogOpen extends React.Component {
             </Link>
           </div>
           <div className={classes.inputWrapper}>
-            <input
-              type="text"
-              value={this.props.newMessageBody}
-              onChange={this.props.onInputMessageChange}
-              onKeyDown={this.props.onSendMessageEnter}
-            />
+            <AddMessageReduxForm onSubmit={this.addNewMessage} />
           </div>
           <div className="futureFeatures"></div>
         </div>
@@ -68,3 +71,26 @@ export class DialogOpen extends React.Component {
     );
   }
 }
+
+const AddMessageForm = props => {
+  return (
+    <form action="" onSubmit={props.handleSubmit}>
+      <Field
+        type="text"
+        component="input"
+        name="newMessageBody"
+        placeholder="Enter a message..."
+        autoComplete="off"
+      />
+    </form>
+  );
+};
+
+const afterSubmit = (result, dispatch) => {
+  dispatch(reset("addMessageForm"));
+};
+
+const AddMessageReduxForm = reduxForm({
+  form: "addMessageForm",
+  onSubmitSuccess: afterSubmit
+})(AddMessageForm);

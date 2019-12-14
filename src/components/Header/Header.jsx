@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import logo from "../../static/images/logo.png";
-import { PROFILE } from "../../constants/url";
+// import { PROFILE } from "../../constants/url";
 import classes from "./Header.module.scss";
 
 export const Header = ({ toggleAuthorize }) => {

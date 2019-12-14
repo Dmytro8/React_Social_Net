@@ -63,6 +63,14 @@
 .main {
   margin-top: 10px;
   color: rgb(90, 90, 90);
+  .text {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
 }
 
 .community {

@@ -36,7 +36,9 @@ export const Post = ({
       <div className={classes.imageForPost}>
         <img src={postImage} alt="post" />
       </div>
-      <main className={classes.main}>{postDescription}</main>
+      <main className={classes.main}>
+        <p className={classes.text}>{postDescription}</p>
+      </main>
       <footer className={classes.community}>
         <div className={classes.comments}>
           <a href="#comment">

@@ -1,18 +1,27 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
 import classes from "./LoginPage.module.scss";
 
 import { REGISTRATION } from "../../../constants/url";
-import { LoginFormContainer } from "../../../containers/AuthenticationContainers/LoginFormContainer";
+// import { LoginFormContainer } from "../../../containers/AuthenticationContainers/LoginFormContainer";
+import { LoginReduxForm } from "../../../components/AuthenticationForms/LoginReduxForm";
+import { loginRequest } from "../../../redux/authReducer";
 
-export const LoginPage = () => {
+const LoginPage = ({ loginRequest }) => {
+  const onSubmit = formData => {
+    // console.log(formData);
+    loginRequest(formData.email, formData.password);
+  };
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.header}>
         <h1 className={classes.headerText}>Sign In</h1>
       </div>
-      <LoginFormContainer />
+      {/* <LoginFormContainer /> */}
+      <LoginReduxForm onSubmit={onSubmit} />
       <div className={classes.signUp}>
         <NavLink to={REGISTRATION}>
           <h4>Sign Up</h4>
@@ -21,3 +30,5 @@ export const LoginPage = () => {
     </div>
   );
 };
+
+export default connect(null, { loginRequest })(LoginPage);

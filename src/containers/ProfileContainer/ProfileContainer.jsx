@@ -7,7 +7,6 @@ import { ProfileBg } from "../../components/ProfileComponents/ProfileBg";
 
 import {
   addPost,
-  updateNewPostText,
   setUserProfile,
   toggleIsProfileFetching
 } from "../../redux/profileReducer";
@@ -29,7 +28,6 @@ class ProfileContainer extends React.Component {
     //     this.props.toggleIsProfileFetching(false);
     //   });
   }
-
   render() {
     return (
       <>
@@ -51,10 +49,8 @@ class ProfileContainer extends React.Component {
               <Posts
                 name={this.props.profile.name}
                 surname={this.props.profile.surname}
-                newPostDescription={this.props.profile.newPostDescription}
                 posts={this.props.profile.posts}
                 addPost={this.props.addPost}
-                updateNewPostText={this.props.updateNewPostText}
               />
             </div>
           </div>
@@ -76,7 +72,6 @@ export default connect(
   mapStateToProps,
   {
     addPost,
-    updateNewPostText,
     setUserProfile,
     toggleIsProfileFetching
   }

@@ -9,9 +9,6 @@ const HeaderContainer = props => {
   return <Header toggleAuthorize={props.toggleAuthorize} />;
 };
 
-let mapStateToProps = state => {};
+// let mapStateToProps = state => {};
 
-export default connect(
-  mapStateToProps,
-  { toggleAuthorize }
-)(HeaderContainer);
+export default connect(null, { toggleAuthorize })(HeaderContainer);

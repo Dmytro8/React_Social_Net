@@ -3,35 +3,25 @@ import { connect } from "react-redux";
 
 import { DialogOpen } from "../../components/MessagesComponents/DialogOpen";
 
-import {
-  sendMessageAC,
-  updateNewMessageTextAC
-} from "../../redux/usersReducer";
+import { sendMessage } from "../../redux/usersReducer";
 
-export const DialogOpenContainerRaw = ({
-  user,
-  usersData,
-  sendMessageAC,
-  updateNewMessageTextAC
-}) => {
-  let onSendMessageEnter = e => {
-    if (e.key === "Enter") {
-      sendMessageAC(user.id);
-    }
-  };
-
-  let onInputMessageChange = e => {
-    let body = e.target.value;
-    updateNewMessageTextAC(body);
-  };
+export const DialogOpenContainerRaw = props => {
+  // let usersData = props.usersData.usersData.map(user => (
+  //   <DialogOpen
+  //     userId={user.id}
+  //     name={user.name}
+  //     surname={user.surname}
+  //     messages={user.messages}
+  //     sendMessage={props.sendMessage}
+  //   />
+  // ));
   return (
     <DialogOpen
-      name={user.name}
-      surname={user.surname}
-      messages={user.messages}
-      newMessageBody={usersData.newMessageBody}
-      onSendMessageEnter={onSendMessageEnter}
-      onInputMessageChange={onInputMessageChange}
+      userId={props.user.id}
+      name={props.user.name}
+      surname={props.user.surname}
+      messages={props.user.messages}
+      sendMessage={props.sendMessage}
     />
   );
 };
@@ -42,18 +32,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    sendMessageAC: userId => {
-      dispatch(sendMessageAC(userId));
-    },
-    updateNewMessageTextAC: text => {
-      dispatch(updateNewMessageTextAC(text));
-    }
-  };
-};
-
 export const DialogOpenContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  { sendMessage }
 )(DialogOpenContainerRaw);
