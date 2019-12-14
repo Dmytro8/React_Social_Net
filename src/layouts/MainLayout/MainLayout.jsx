@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import "./MainLayout.scss";
 
-import { Header } from "../../components/Header";
 import { NavBar } from "../../containers/NavBar";
 import { Conversations } from "../../components/Conversations";
+import { HeaderContainer } from "../../containers/HeaderContainer";
 
 export class MainLayout extends Component {
   render() {
     return (
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <NavBar />
         <main className="content">{this.props.children}</main>
         <Conversations />

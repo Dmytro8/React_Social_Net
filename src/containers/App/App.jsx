@@ -21,9 +21,11 @@ import "./App.scss";
 import { DialogOpenContainer } from "../../containers/DialogOpenContainer";
 import { Preloader } from "../../components/Preloader";
 import { AuthLayout } from "../../layouts/AuthLayout";
-import { AuthenticationPage } from "../../routes/AuthenticationPage";
-import { RegistrationForm } from "../../components/AuthenticationForms/RegistrationForm";
-import { LoginFormContainer } from "../AuthenticationContainers/LoginFormContainer";
+import { AuthenticationPage } from "../../routes/AuthenticationPages/AuthenticationPage";
+// import { RegistrationForm } from "../../components/AuthenticationForms/RegistrationForm";
+// import { LoginFormContainer } from "../AuthenticationContainers/LoginFormContainer";
+import { LoginPage } from "../../routes/AuthenticationPages/LoginPage";
+import { RegistrationPage } from "../../routes/AuthenticationPages/RegistrationPage";
 
 // Import pages
 const ProfilePage = lazy(() => import("../../routes/ProfilePage"));
@@ -89,8 +91,8 @@ export const AppRaw = ({ state }) => {
           >
             <Switch>
               <Route exact component={AuthenticationPage} path={MAIN} />
-              <Route exact component={LoginFormContainer} path={LOGIN} />
-              <Route exact component={RegistrationForm} path={REGISTRATION} />
+              <Route exact component={LoginPage} path={LOGIN} />
+              <Route exact component={RegistrationPage} path={REGISTRATION} />
               <Redirect to={MAIN} />
             </Switch>
           </Suspense>

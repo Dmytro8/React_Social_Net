@@ -21,7 +21,6 @@ if (month.length > 2) {
 const year = date.getFullYear();
 
 const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "ON-INPUT-POST-CHANGE";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const TOGGLE_IS_PROFILE_FETCHING = "TOGGLE_IS_PROFILE_FETCHING";
 
@@ -92,7 +91,7 @@ export const profileReducer = (state = initialState, action) => {
     case ADD_POST: {
       let newPost = {
         id: 6,
-        postDescription: state.profile.newPostDescription,
+        postDescription: action.newPostBody,
         time: `${day} ${month} ${year}`,
         likesCount: 0
       };
@@ -100,15 +99,8 @@ export const profileReducer = (state = initialState, action) => {
         ...state,
         profile: {
           ...state.profile,
-          posts: [newPost, ...state.profile.posts],
-          newPostDescription: ""
+          posts: [newPost, ...state.profile.posts]
         }
-      };
-    }
-    case UPDATE_NEW_POST_TEXT: {
-      return {
-        ...state,
-        profile: { ...state.profile, newPostDescription: action.postMessage }
       };
     }
     case SET_USER_PROFILE: {
@@ -123,11 +115,7 @@ export const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPost = () => ({ type: ADD_POST });
-export const updateNewPostText = text => ({
-  type: UPDATE_NEW_POST_TEXT,
-  postMessage: text
-});
+export const addPost = newPostBody => ({ type: ADD_POST, newPostBody });
 export const setUserProfile = profile => ({
   type: SET_USER_PROFILE,
   profile

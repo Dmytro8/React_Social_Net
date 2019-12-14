@@ -1,9 +1,15 @@
+import { authAPI } from "../api/authApi";
+import {
+  setUserProfile,
+  toggleIsProfileFetching
+} from "../redux/profileReducer";
+
 const UPDATE_LOGIN_FIELD = "UPDATE_LOGIN_FIELD";
 const UPDATE_PASSWORD_FIELD = "UPDATE_PASSWORD_FIELD";
 const UPDATE_AUTHORIZE = "UPDATE_AUTHORIZE";
 
 let initialState = {
-  userId: 99,
+  userId: 10,
   email: "robert.downey@gmail.com",
   password: "robertDowney",
   isAuthorized: false,
@@ -27,7 +33,7 @@ export const authReducer = (state = initialState, action) => {
     case UPDATE_AUTHORIZE: {
       return {
         ...state,
-        isAuthorized: true
+        isAuthorized: action.isAuthorized
       };
     }
     default: {
@@ -44,6 +50,17 @@ export const updatePasswordField = passwordBody => ({
   type: UPDATE_PASSWORD_FIELD,
   password: passwordBody
 });
-export const updateAuthorize = () => ({
-  type: UPDATE_AUTHORIZE
+export const toggleAuthorize = booleanVar => ({
+  type: UPDATE_AUTHORIZE,
+  isAuthorized: booleanVar
 });
+
+export const loginRequest = (email, password) => {
+  return dispatch => {
+    authAPI.login(email, password).then(response => {
+      dispatch(setUserProfile(response));
+      dispatch(toggleAuthorize(true));
+      dispatch(toggleIsProfileFetching(false));
+    });
+  };
+};

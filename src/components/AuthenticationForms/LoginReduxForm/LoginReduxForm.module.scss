@@ -1,18 +1,5 @@
 @import "../../../styles/_vars.scss";
-.wrapper {
-  height: 550px;
-  display: grid;
-  justify-content: center;
-  align-content: flex-start;
-}
-.header {
-  display: grid;
-  justify-content: center;
-  margin: 40px 0 40px 0;
-  h1 {
-    color: rgb(80, 80, 80);
-  }
-}
+
 .formInputs {
   height: 40px;
   width: 300px;
@@ -29,6 +16,31 @@
     // border: 1px solid $accent-color;
   }
 }
+.rememberMe {
+  display: grid;
+  justify-content: start;
+  grid-auto-flow: column;
+  margin: 10px 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  input {
+    // opacity: 0.5;
+
+    height: 20px;
+    width: 20px;
+  }
+  :checked {
+    background-color: $accent-color;
+  }
+  .rememberMeCheckMark {
+    align-self: center;
+    color: rgb(80, 80, 80);
+    margin-left: 10px;
+  }
+}
 
 .buttonSignIn {
   display: grid;
@@ -38,15 +50,8 @@
     background: rgb(0, 152, 223);
   }
   button {
-    border: none;
     width: 150px;
     height: 50px;
-    background: rgb(3, 169, 244);
-    color: white;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 15px;
-    box-shadow: 0 3px 10px #ccc, 3px 3px 10px #ccc, -3px 3px 10px #ccc;
   }
 }
 
@@ -83,12 +88,4 @@
 
 .optionsText h4 {
   color: rgb(200, 200, 200);
-}
-.signUp h4 {
-  color: rgb(150, 150, 150);
-}
-.signUp {
-  display: grid;
-  justify-content: center;
-  margin-top: 60px;
 }

@@ -1,0 +1,46 @@
+@import "../../../styles/_vars.scss";
+.profileStatusWrapper {
+  padding-top: 5px;
+  color: rgb(100, 100, 100);
+}
+.profileStatus {
+  line-height: 26px;
+  width: 540px;
+  cursor: pointer;
+  :hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+  }
+}
+.profileStatusFocus {
+  position: relative;
+  width: 520px;
+  height: 100px;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid $accent-color;
+}
+.profileStatusFocusWrapper {
+  display: grid;
+  justify-content: center;
+}
+.statusInput {
+  margin-top: 20px;
+  input {
+    width: 480px;
+    border: none;
+    padding-left: 10px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  :focus {
+    border: $accent-color;
+  }
+}
+.statusSave {
+  margin-top: 10px;
+  button {
+    height: 30px;
+    width: 80px;
+  }
+}
