@@ -13,6 +13,13 @@
 }
 .profileAvatar {
   grid-area: avatar;
+  width: 60px;
+  height: 60px;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+  }
 }
 .inputPost {
   grid-area: input;

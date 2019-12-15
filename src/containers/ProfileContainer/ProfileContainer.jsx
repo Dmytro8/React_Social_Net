@@ -10,7 +10,7 @@ import {
   setUserProfile,
   toggleIsProfileFetching
 } from "../../redux/profileReducer";
-import { Preloader } from "../../components/Preloader";
+import { Preloader } from "../../components/common/Preloader";
 import { ProfileHeader } from "../../components/ProfileComponents/ProfileHeader";
 import { Posts } from "../../components/ProfileComponents/Posts";
 import { withRouter } from "react-router";
@@ -68,11 +68,8 @@ let mapStateToProps = state => ({
 
 let WithUrlDataProfileContainer = withRouter(ProfileContainer);
 
-export default connect(
-  mapStateToProps,
-  {
-    addPost,
-    setUserProfile,
-    toggleIsProfileFetching
-  }
-)(WithUrlDataProfileContainer);
+export default connect(mapStateToProps, {
+  addPost,
+  setUserProfile,
+  toggleIsProfileFetching
+})(WithUrlDataProfileContainer);

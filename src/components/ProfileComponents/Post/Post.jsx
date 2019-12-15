@@ -15,7 +15,13 @@ export const Post = ({
   return (
     <div className={classes.wrapper}>
       <div className={classes.details}>
-        <ProfileAvatarMini name={name} surname={surname} />
+        <div className={classes.userImg}>
+          <ProfileAvatarMini
+            name={name}
+            surname={surname}
+            path="../../../static/images"
+          />
+        </div>
         <div className={classes.info}>
           <div>
             <span className={classes.userName}>

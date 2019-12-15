@@ -40,10 +40,12 @@ export class DialogOpen extends React.Component {
             <div className={classes.status}>Offline</div>
           </div>
           <div className={classes.userImage}>
-            <ProfileAvatarMini
-              name={this.props.name}
-              surname={this.props.surname}
-            />
+            <div className={classes.userImg}>
+              <ProfileAvatarMini
+                name={this.props.name}
+                surname={this.props.surname}
+              />
+            </div>
           </div>
         </div>
         <div className={classes.messagesContent}>

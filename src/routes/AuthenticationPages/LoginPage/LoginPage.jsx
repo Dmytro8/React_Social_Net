@@ -10,7 +10,7 @@ import { LoginReduxForm } from "../../../components/AuthenticationForms/LoginRed
 import { loginRequest } from "../../../redux/authReducer";
 
 const LoginPage = ({ loginRequest }) => {
-  const onSubmit = formData => {
+  const onSubmitLogin = formData => {
     // console.log(formData);
     loginRequest(formData.email, formData.password);
   };
@@ -21,7 +21,7 @@ const LoginPage = ({ loginRequest }) => {
         <h1 className={classes.headerText}>Sign In</h1>
       </div>
       {/* <LoginFormContainer /> */}
-      <LoginReduxForm onSubmit={onSubmit} />
+      <LoginReduxForm onSubmit={onSubmitLogin} />
       <div className={classes.signUp}>
         <NavLink to={REGISTRATION}>
           <h4>Sign Up</h4>

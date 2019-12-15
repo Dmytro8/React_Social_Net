@@ -1,26 +1,10 @@
-@import "../../../styles/_vars.scss";
+@import "../../styles/_vars.scss";
 
-.formInputs {
-  height: 40px;
-  width: 300px;
-  display: grid;
-  margin-bottom: 20px;
-  input {
-    border: none;
-    padding-left: 20px;
-    line-height: 50px;
-    font-size: 16px;
-  }
-  :focus {
-    outline: 0;
-    // border: 1px solid $accent-color;
-  }
-}
 .rememberMe {
   display: grid;
   justify-content: start;
   grid-auto-flow: column;
-  margin: 10px 0;
+  margin-top: 20px;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -42,15 +26,18 @@
   }
 }
 
-.buttonSignIn {
+.buttonSign {
   display: grid;
   justify-content: center;
-  margin-top: 10px;
-  :focus {
+  margin-top: 20px;
+  // :focus {
+  //   background: rgb(0, 152, 223);
+  // }
+  :active {
     background: rgb(0, 152, 223);
   }
   button {
-    width: 150px;
+    width: 300px;
     height: 50px;
   }
 }
@@ -58,7 +45,7 @@
 .optionsText {
   display: grid;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .options {
@@ -88,4 +75,16 @@
 
 .optionsText h4 {
   color: rgb(200, 200, 200);
+}
+
+.formInputsWrapper {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 10px;
+  .formInputs {
+    width: auto;
+  }
+}
+.signInLink {
+  margin-top: 20px;
 }

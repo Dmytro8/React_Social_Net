@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { follow, unfollow, getUsers } from "../../redux/usersReducer";
 import { Users } from "../../components/UsersComponents/Users";
-import { Preloader } from "../../components/Preloader";
+import { Preloader } from "../../components/common/Preloader";
 import { SearchPanel } from "../../components/SearchPanel";
 import classes from "./UsersContainer.module.scss";
 
@@ -56,11 +56,8 @@ let mapStateToProps = state => {
 //   };
 // };
 
-export default connect(
-  mapStateToProps,
-  {
-    follow,
-    unfollow,
-    getUsers
-  }
-)(UsersContainer);
+export default connect(mapStateToProps, {
+  follow,
+  unfollow,
+  getUsers
+})(UsersContainer);

@@ -1,3 +1,22 @@
 .wrapper {
   height: 500px;
+  display: grid;
+  justify-content: center;
+  align-content: flex-start;
+}
+.header {
+  display: grid;
+  justify-content: center;
+  margin: 30px 0;
+  h1 {
+    color: rgb(80, 80, 80);
+  }
+}
+.signIn {
+  display: grid;
+  justify-content: center;
+  margin-top: 100px;
+  h4 {
+    color: rgb(150, 150, 150);
+  }
 }

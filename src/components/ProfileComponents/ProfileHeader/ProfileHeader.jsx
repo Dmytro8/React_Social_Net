@@ -4,15 +4,21 @@ import classes from "./ProfileHeader.module.scss";
 
 import { PROFILE } from "../../../constants/url";
 import { ProfileStatus } from "../ProfileStatus";
+import { ProfileAvatarMini } from "../ProfileAvatarMini";
 
 export const ProfileHeader = ({ name, surname, status }) => {
   return (
     <div>
       <div className={classes.profileImg}>
-        <img
-          src={require(`../../../static/images/${name} ${surname}.jpg`)}
-          alt="profile avatar"
+        <ProfileAvatarMini
+          name={name}
+          surname={surname}
+          path="../../../static/images"
         />
+        {/* <img
+          src={require(`/${name} ${surname}.jpg`)}
+          alt="profile avatar"
+        /> */}
       </div>
       <div className={classes.statusBar}>
         <div className={classes.wrapperStatus}>

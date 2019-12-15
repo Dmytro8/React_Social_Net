@@ -6,6 +6,8 @@ import classes from "./WhatsNew.module.scss";
 import { ProfileAvatarMini } from "../ProfileAvatarMini";
 
 import Button from "@material-ui/core/Button";
+import { Textarea } from "../../common/FormControls/FormControls";
+import { emptyField } from "../../../utils/validators/validators";
 
 export const WhatsNew = ({ name, surname, addPost }) => {
   let addNewPost = values => {
@@ -17,7 +19,11 @@ export const WhatsNew = ({ name, surname, addPost }) => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.profileAvatar}>
-        <ProfileAvatarMini name={name} surname={surname} />
+        <ProfileAvatarMini
+          name={name}
+          surname={surname}
+          path="../../../static/images"
+        />
       </div>
       <div className={classes.inputPost}>
         <AddPostReduxForm onSubmit={addNewPost} />
@@ -49,7 +55,8 @@ const AddPostForm = props => {
     <form action="" onSubmit={props.handleSubmit}>
       <Field
         name="newPostBody"
-        component="textarea"
+        component={Textarea}
+        validate={[emptyField]}
         type="text"
         placeholder="What's new?"
       />

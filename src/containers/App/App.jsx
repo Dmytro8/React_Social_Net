@@ -19,7 +19,7 @@ import { connect } from "react-redux";
 import "./App.scss";
 
 import { DialogOpenContainer } from "../../containers/DialogOpenContainer";
-import { Preloader } from "../../components/Preloader";
+import { Preloader } from "../../components/common/Preloader";
 import { AuthLayout } from "../../layouts/AuthLayout";
 import { AuthenticationPage } from "../../routes/AuthenticationPages/AuthenticationPage";
 // import { RegistrationForm } from "../../components/AuthenticationForms/RegistrationForm";

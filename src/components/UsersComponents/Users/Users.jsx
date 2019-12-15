@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { MESSAGES, PROFILE } from "../../../constants/url";
 import classes from "./Users.module.scss";
+import { ProfileAvatarMini } from "../../ProfileComponents/ProfileAvatarMini";
 
 export const Users = props => {
   return (
@@ -14,10 +15,7 @@ export const Users = props => {
               <NavLink to={`${PROFILE}/${user.id}`}>
                 {/* <NavLink to={`${PROFILE}`}> */}
                 <div className={classes.avatarImg}>
-                  <img
-                    src={require(`../../../static/images/${user.name} ${user.surname}.jpg`)}
-                    alt="user"
-                  />
+                  <ProfileAvatarMini name={user.name} surname={user.surname} />
                 </div>
               </NavLink>
             </div>
