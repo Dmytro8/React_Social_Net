@@ -21,7 +21,10 @@ export class DialogOpen extends React.Component {
   }
 
   addNewMessage = values => {
-    this.props.sendMessage(this.props.userId, values.newMessageBody);
+    console.log(values.newMessageBody);
+    if (values.newMessageBody !== undefined) {
+      this.props.sendMessage(this.props.userId, values.newMessageBody);
+    }
   };
 
   render() {

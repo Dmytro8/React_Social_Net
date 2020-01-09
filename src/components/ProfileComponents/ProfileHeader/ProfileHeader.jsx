@@ -32,19 +32,19 @@ export const ProfileHeader = ({ name, surname, status }) => {
         <ul>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}`}>NavLink-1</Link>
+            <Link to={`${PROFILE}`}>General</Link>
           </li>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}`}>NavLink-2</Link>
+            <Link to={`${PROFILE}/posts`}>Posts</Link>
           </li>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}`}>NavLink-3</Link>
+            <Link to={`${PROFILE}`}>Section-1</Link>
           </li>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}`}>NavLink-4</Link>
+            <Link to={`${PROFILE}`}>Section-2</Link>
           </li>
         </ul>
       </nav>

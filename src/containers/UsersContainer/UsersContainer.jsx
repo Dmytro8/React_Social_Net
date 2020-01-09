@@ -11,7 +11,7 @@ import { getUsersData, getIsFetching } from "../../redux/usersSelectors";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.getUsers(this.props.profileId);
+    // this.props.getUsers(this.props.profileId);
   }
   render() {
     return (
@@ -60,6 +60,6 @@ let mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   follow,
-  unfollow,
-  getUsers
+  unfollow
+  // getUsers
 })(UsersContainer);
