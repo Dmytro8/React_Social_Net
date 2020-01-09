@@ -6,6 +6,8 @@ import { Users } from "../../components/UsersComponents/Users";
 import { Preloader } from "../../components/common/Preloader";
 import { SearchPanel } from "../../components/SearchPanel";
 import classes from "./UsersContainer.module.scss";
+import { getProfileId } from "../../redux/profileSelectors";
+import { getUsersData, getIsFetching } from "../../redux/usersSelectors";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -33,9 +35,9 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = state => {
   return {
-    profileId: state.profileData.profile.id,
-    users: state.usersData.usersData,
-    isFetching: state.usersData.isFetching
+    profileId: getProfileId(state),
+    users: getUsersData(state),
+    isFetching: getIsFetching(state)
   };
 };
 

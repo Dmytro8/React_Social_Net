@@ -32,7 +32,7 @@
   .withoutError {
     display: none;
   }
-  .withError {
+  .errorComment {
     display: inline-block;
     margin: 2px 0 7px 0;
     color: $error-color;
