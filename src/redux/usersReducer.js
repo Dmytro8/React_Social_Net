@@ -77,14 +77,11 @@ export const toggleIsFetching = iFetching => ({
   iFetching
 });
 
-export const getUsers = profileId => {
-  return dispatch => {
-    usersAPI.getUsers().then(response => {
-      dispatch(toggleIsFetching(false));
-      let usersFilter = response.users.filter(
-        user => user.id !== parseInt(profileId, 10)
-      );
-      dispatch(setUsers(usersFilter));
-    });
-  };
+export const getUsers = profileId => async dispatch => {
+  let response = await usersAPI.getUsers();
+  dispatch(toggleIsFetching(false));
+  let usersFilter = response.users.filter(
+    user => user.id !== parseInt(profileId, 10)
+  );
+  dispatch(setUsers(usersFilter));
 };

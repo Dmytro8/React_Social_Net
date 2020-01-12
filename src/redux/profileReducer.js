@@ -90,7 +90,7 @@ export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST: {
       let newPost = {
-        id: 6,
+        id: state.profile.posts.length + 1,
         postDescription: action.newPostBody,
         time: `${day} ${month} ${year}`,
         likesCount: 0
