@@ -1,64 +1,111 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 
-import { PROFILE, MESSAGES, NEWS, MUSIC, SETTINGS } from "../../constants/url";
+import {
+  MAIN,
+  PROFILE,
+  MESSAGES,
+  USERS,
+  NEWS,
+  MUSIC,
+  SETTINGS,
+  REGISTRATION,
+  LOGIN
+} from "../../constants/url";
 import { MainLayout } from "../../layouts/MainLayout";
 
+import { connect } from "react-redux";
+
 import "./App.scss";
-import { DialogOpen } from "../../components/DialogOpen";
+
+import { DialogOpenContainer } from "../../containers/DialogOpenContainer";
+import { Preloader } from "../../components/common/Preloader";
+import { AuthLayout } from "../../layouts/AuthLayout";
+import { AuthenticationPage } from "../../routes/AuthenticationPages/AuthenticationPage";
+// import { RegistrationForm } from "../../components/AuthenticationForms/RegistrationForm";
+// import { LoginFormContainer } from "../AuthenticationContainers/LoginFormContainer";
+import { LoginPage } from "../../routes/AuthenticationPages/LoginPage";
+import { RegistrationPage } from "../../routes/AuthenticationPages/RegistrationPage";
 
 // Import pages
 const ProfilePage = lazy(() => import("../../routes/ProfilePage"));
+const UsersPage = lazy(() => import("../../routes/UsersPage"));
 const MessagesPage = lazy(() => import("../../routes/MessagesPage"));
 const NewsPage = lazy(() => import("../../routes/NewsPage"));
 const MusicPage = lazy(() => import("../../routes/MusicPage"));
 const SettingsPage = lazy(() => import("../../routes/SettingsPage"));
 
-export const App = ({ state, dispatch }) => {
-  let userDataRoutes = state.messagesData.messagesData.map(user => (
+export const AppRaw = ({ state }) => {
+  let userDataRoutes = state.usersData.usersData.map(user => (
     <Route
       exact
-      render={() => (
-        <DialogOpen
-          user={user}
-          dispatch={dispatch}
-          newMessageBody={state.messagesData.newMessageBody}
-        />
-      )}
-      path={`${MESSAGES}/${user.name}-${user.surname}`}
+      render={() => <DialogOpenContainer user={user} />}
+      path={`${MESSAGES}/${user.id}`}
     />
   ));
-  return (
-    <BrowserRouter>
-      <MainLayout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Switch>
-            <Route
-              exact
-              render={() => (
-                <ProfilePage
-                  profileData={state.profileData}
-                  dispatch={dispatch}
-                />
-              )}
-              path={PROFILE}
-            />
-            <Route
-              exact
-              render={() => (
-                <MessagesPage userData={state.messagesData.messagesData} />
-              )}
-              path={MESSAGES}
-            />
-            {userDataRoutes}
-            <Route exact component={NewsPage} path={NEWS} />
-            <Route exact component={MusicPage} path={MUSIC} />
-            <Route exact component={SettingsPage} path={SETTINGS} />
 
-            <Redirect to={PROFILE} />
-          </Switch>
-        </Suspense>
-      </MainLayout>
-    </BrowserRouter>
+  const spinnerStyle = {
+    position: "fixed",
+    left: "50%",
+    top: "50%",
+    marginLeft: "-20px",
+    marginTop: "-20px"
+  };
+
+  return (
+    <>
+      {state.authData.isAuthorized ? (
+        <MainLayout>
+          <Suspense
+            fallback={
+              <div style={spinnerStyle}>
+                <Preloader />
+              </div>
+            }
+          >
+            <Switch>
+              <Route component={ProfilePage} path={`${PROFILE}/:userId?`} />
+              <Route
+                exact
+                render={() => <MessagesPage state={state} />}
+                path={MESSAGES}
+              />
+              <Route exact component={UsersPage} path={USERS} />
+              {userDataRoutes}
+              <Route exact component={NewsPage} path={NEWS} />
+              <Route exact component={MusicPage} path={MUSIC} />
+              <Route exact component={SettingsPage} path={SETTINGS} />
+
+              <Redirect to={PROFILE} />
+            </Switch>
+          </Suspense>
+        </MainLayout>
+      ) : (
+        <AuthLayout>
+          <Suspense
+            fallback={
+              <div style={spinnerStyle}>
+                <Preloader />
+              </div>
+            }
+          >
+            <Switch>
+              <Route exact component={AuthenticationPage} path={MAIN} />
+              <Route exact component={LoginPage} path={LOGIN} />
+              <Route exact component={RegistrationPage} path={REGISTRATION} />
+              <Redirect to={MAIN} />
+            </Switch>
+          </Suspense>
+        </AuthLayout>
+      )}
+    </>
   );
 };
+
+const mapStateToProps = state => {
+  return {
+    state: state
+  };
+};
+
+export const App = connect(mapStateToProps)(AppRaw);

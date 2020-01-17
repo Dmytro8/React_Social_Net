@@ -1,0 +1,21 @@
+@import "../../../styles/_vars.scss";
+
+.navLinks {
+  display: grid;
+  height: 50px;
+  color: black;
+}
+
+.aLink {
+  color: rgb(0, 0, 0);
+}
+
+.selected {
+  color: $accent-color;
+}
+
+.navLinks a {
+  align-self: center;
+  padding-left: 40px;
+  line-height: 50px;
+}

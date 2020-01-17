@@ -1,0 +1,13 @@
+@import "../../styles/_vars.scss";
+
+.conversations {
+  grid-area: mainConversations;
+  background-color: $bg-panel-color;
+  position: fixed;
+  width: 250px;
+  top: $header-height;
+  right: 0;
+  height: 100%;
+  box-shadow: 2px 0 10px -5px rgba(117, 117, 117, 0.8),
+    -2px 0 10px -5px rgba(117, 117, 117, 0.8);
+}
