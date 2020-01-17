@@ -1,0 +1,80 @@
+@import "../../../styles/_vars.scss";
+//Inputs
+//------------------------------------------
+.formInputs {
+  height: 50px;
+  // width: 300px;
+  display: grid;
+  input {
+    border: white 1px solid;
+    padding-left: 20px;
+    font-size: 16px;
+  }
+  :focus {
+    outline: 0;
+    border: 1px solid $accent-color;
+  }
+}
+.withoutError {
+  display: block;
+  height: 10px;
+}
+.withError {
+  display: none;
+}
+.errorInputs {
+  .formInputs {
+    border: 1px solid $error-color;
+    :focus {
+      border: 1px solid transparent;
+    }
+  }
+  .withoutError {
+    display: none;
+  }
+  .errorComment {
+    display: inline-block;
+    margin: 2px 0 7px 0;
+    color: $error-color;
+  }
+}
+//----------------------------------------
+
+//Textarea
+//------------------------------------
+.formTextarea {
+  border-radius: 40px;
+  border-radius: 5px;
+  textarea {
+    border-radius: 5px;
+  }
+}
+.errorWarning {
+  display: none;
+}
+.errorTextarea {
+  position: relative;
+  .formTextarea {
+    border: 1px solid $error-color;
+  }
+  .errorComment {
+    display: none;
+    color: $error-color;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 70px 30px 0 0;
+  }
+  .errorWarning {
+    display: block;
+    color: $error-color;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 70px 5px 0 0;
+    cursor: pointer;
+  }
+}
+.errorWarning:hover + .errorComment {
+  display: inline-block;
+}

@@ -3,39 +3,48 @@ import { Link } from "react-router-dom";
 import classes from "./ProfileHeader.module.scss";
 
 import { PROFILE } from "../../../constants/url";
+import { ProfileStatus } from "../ProfileStatus";
+import { ProfileAvatarMini } from "../ProfileAvatarMini";
 
-export const ProfileHeader = ({ profileData }) => {
-  let userImage = profileData.map(profile => (
-    <img
-      src={require(`../../../static/images/${profile.name} ${profile.surname}.jpg`)}
-      alt="profile avatar"
-    />
-  ));
-  let userName = profileData.map(profile => (
-    <h2>{`${profile.name} ${profile.surname}`}</h2>
-  ));
-
+export const ProfileHeader = ({ name, surname, status }) => {
   return (
     <div>
-      <div className={classes.profileImg}>{userImage}</div>
-      <div className={classes.profileName}>{userName}</div>
+      <div className={classes.profileImg}>
+        <ProfileAvatarMini
+          name={name}
+          surname={surname}
+          path="../../../static/images"
+        />
+        {/* <img
+          src={require(`/${name} ${surname}.jpg`)}
+          alt="profile avatar"
+        /> */}
+      </div>
+      <div className={classes.statusBar}>
+        <div className={classes.wrapperStatus}>
+          <div>
+            <h3>{`${name} ${surname}`}</h3>
+          </div>
+          <ProfileStatus status={status} />
+        </div>
+      </div>
       <nav className={classes.profileNav}>
         <ul>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}`}>NavLink-1</Link>
+            <Link to={`${PROFILE}`}>General</Link>
           </li>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}`}>NavLink-2</Link>
+            <Link to={`${PROFILE}/posts`}>Posts</Link>
           </li>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}`}>NavLink-3</Link>
+            <Link to={`${PROFILE}`}>Section-1</Link>
           </li>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}`}>NavLink-4</Link>
+            <Link to={`${PROFILE}`}>Section-2</Link>
           </li>
         </ul>
       </nav>

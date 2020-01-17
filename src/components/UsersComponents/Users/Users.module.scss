@@ -1,0 +1,64 @@
+@import "../../../styles/_vars.scss";
+
+.usersWrapper {
+  padding-top: 50px;
+}
+.userWrapper {
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  border-top: 1px solid silver;
+}
+.userAvatar {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.avatarImg {
+  width: 80px;
+  height: 80px;
+  background-color: black;
+  border-radius: 40px;
+  transition: all 0.1s linear;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+  }
+  :hover {
+    transition: all 0.1s linear;
+    opacity: 0.7;
+  }
+}
+.button {
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s linear;
+  box-shadow: none;
+}
+#unfollowedButton {
+  color: #555;
+}
+#followedButton {
+  color: $accent-color;
+}
+.userName {
+  margin-top: 10px;
+  font-size: 16px;
+}
+.userTitle {
+  margin-top: 3px;
+  font-size: 15px;
+  color: #555;
+}
+.writeMessage {
+  color: $accent-color;
+  font-size: 17px;
+  margin-top: 10px;
+}
+.userAction {
+  display: grid;
+  justify-content: center;
+}
