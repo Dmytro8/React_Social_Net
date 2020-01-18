@@ -42,7 +42,7 @@ export const Users = props => {
                     props.unfollow(user.id);
                   }}
                 >
-                  Follow
+                  Followed
                 </button>
               ) : (
                 <button
