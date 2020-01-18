@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://127.0.0.1:5000/auth"
+  // baseURL: "http://127.0.0.1:5000/auth"
+  baseURL: "https://python-api-social-net.herokuapp.com/auth"
 });
 
 export const authAPI = {
