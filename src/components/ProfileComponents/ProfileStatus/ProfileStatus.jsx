@@ -25,7 +25,8 @@ export class ProfileStatus extends React.Component {
     });
   };
   // componentDidUpdate = (prevProps, prevState) => {
-  //   if (prevProps.status !== this.props.status) {
+  //   debugger;
+  //   if (prevProps.status !== this.props.state) {
   //     this.setState({
   //       state: this.props.status
   //     });
@@ -37,9 +38,11 @@ export class ProfileStatus extends React.Component {
         {!this.state.editMode && (
           <div className={classes.profileStatus}>
             {this.props.status && (
-              <h4 onClick={this.activateEditMode}>{this.props.status}</h4>
+              <h4 onClick={this.activateEditMode}>{this.state.status}</h4>
             )}
-            {(this.props.status === "" || !this.props.status) && (
+            {(this.props.status === "" ||
+              !this.props.status ||
+              this.state.status === "") && (
               <h4 onClick={this.activateEditMode}>set a status message</h4>
             )}
           </div>
