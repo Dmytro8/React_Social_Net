@@ -12,7 +12,7 @@ export class MainLayout extends Component {
         <HeaderContainer />
         <NavBar />
         <main className="content">{this.props.children}</main>
-        <Conversations />
+        {/* <Conversations /> */}
       </div>
     );
   }
