@@ -1,7 +1,10 @@
 import axios from "axios";
 
 const instance = axios.create({
+  //for Local Development
   // baseURL: "http://127.0.0.1:5000/auth"
+
+  //using API from heroku
   baseURL: "https://python-api-social-net.herokuapp.com/auth"
 });
 
