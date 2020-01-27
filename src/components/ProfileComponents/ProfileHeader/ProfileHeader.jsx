@@ -22,7 +22,7 @@ export const ProfileHeader = ({ name, surname, status }) => {
       </div>
       <div className={classes.statusBar}>
         <div className={classes.wrapperStatus}>
-          <div>
+          <div className={classes.fullName}>
             <h3>{`${name} ${surname}`}</h3>
           </div>
           <ProfileStatus status={status} />
@@ -40,11 +40,11 @@ export const ProfileHeader = ({ name, surname, status }) => {
           </li>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}`}>Section-1</Link>
+            <Link to={`${PROFILE}`}>Photos</Link>
           </li>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}`}>Section-2</Link>
+            <Link to={`${PROFILE}`}>Videos</Link>
           </li>
         </ul>
       </nav>
