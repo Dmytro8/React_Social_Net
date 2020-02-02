@@ -4,7 +4,7 @@ const instance = axios.create({
   //for Local Development
   // baseURL: "http://127.0.0.1:5000/auth"
 
-  //using API from heroku
+  //using API from Heroku
   baseURL: "https://python-api-social-net.herokuapp.com/auth"
 });
 
@@ -27,6 +27,8 @@ export const authAPI = {
       );
   },
   logout() {
-    return instance.delete(`/login`);
+    return instance.put("/logout").then(response => {
+      return response.data;
+    });
   }
 };

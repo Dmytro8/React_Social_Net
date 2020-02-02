@@ -3,12 +3,12 @@ import { Header } from "../../components/Header";
 
 import { connect } from "react-redux";
 
-import { toggleAuthorize } from "../../redux/authReducer";
+import { logoutRequest } from "../../redux/authReducer";
 
 const HeaderContainer = props => {
-  return <Header toggleAuthorize={props.toggleAuthorize} />;
+  return <Header logoutRequest={props.logoutRequest} />;
 };
 
 // let mapStateToProps = state => {};
 
-export default connect(null, { toggleAuthorize })(HeaderContainer);
+export default connect(null, { logoutRequest })(HeaderContainer);
