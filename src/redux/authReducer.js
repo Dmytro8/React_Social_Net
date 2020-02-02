@@ -69,7 +69,7 @@ export const AuthorizedFailed = booleanVar => ({
 
 export const loginRequest = (email, password) => async dispatch => {
   let response = await authAPI.login(email, password);
-  debugger;
+  // debugger;
   if (!response.message) {
     dispatch(setUserProfile(response));
     dispatch(toggleAuthorize(true));
@@ -83,6 +83,6 @@ export const loginRequest = (email, password) => async dispatch => {
 
 export const logoutRequest = () => async dispatch => {
   let response = await authAPI.logout();
-  debugger;
+  // debugger;
   dispatch(toggleAuthorize(false));
 };
