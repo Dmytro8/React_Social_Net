@@ -5,10 +5,12 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+const UPDATE_FIELD_SEARCH = "UPDATE_FIELD_SEARCH";
 
 let initialState = {
   usersData: [],
-  iFetching: true
+  iFetching: true,
+  searchField: ""
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -58,6 +60,9 @@ export const usersReducer = (state = initialState, action) => {
     case TOGGLE_IS_FETCHING: {
       return { ...state, isFetching: action.isFetching };
     }
+    case UPDATE_FIELD_SEARCH: {
+      return { ...state, searchField: action.fieldBody };
+    }
     default:
       return state;
   }
@@ -75,6 +80,10 @@ export const setUsers = users => ({ type: SET_USERS, users });
 export const toggleIsFetching = iFetching => ({
   type: TOGGLE_IS_FETCHING,
   iFetching
+});
+export const updateSeachField = fieldBody => ({
+  type: UPDATE_FIELD_SEARCH,
+  fieldBody
 });
 
 export const getUsers = profileId => async dispatch => {

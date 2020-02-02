@@ -6,31 +6,50 @@ import classes from "./MessagesPage.module.scss";
 import { Dialog } from "../../components/MessagesComponents/Dialog/Dialog";
 import { MESSAGES } from "../../constants/url";
 import { SearchPanel } from "../../components/SearchPanel";
+import { SearchPanelContainer } from "../../containers/SearchPanelContainer";
 
 export const MessagesPage = ({ state }) => {
-  let userData = state.usersData.usersData.map(user => {
-    if (user.followed === true) {
-      return (
-        <NavLink
-          key={user.id}
-          className={classes.dialogLink}
-          to={`${MESSAGES}/${user.id}`}
-        >
-          <Dialog
-            key={user.id}
-            id={user.id}
-            name={user.name}
-            surname={user.surname}
-          />
-        </NavLink>
-      );
+  // const regexLiteral = `/^El+/i`;
+  const searchUser = state.usersData.searchField;
+
+  const filterUsers = () => {
+    if (searchUser) {
+      const regexLiteral = new RegExp(`^${searchUser}+`, "i");
+      const filterUsers = state.usersData.usersData.filter(user => {
+        return (
+          user.followed &&
+          (regexLiteral.test(user.name) || regexLiteral.test(user.surname))
+        );
+      });
+      return filterUsers;
+    } else {
+      const filterUsers = state.usersData.usersData.filter(user => {
+        return user.followed;
+      });
+      return filterUsers;
     }
-    return null;
+  };
+
+  let userData = filterUsers().map(user => {
+    return (
+      <NavLink
+        key={user.id}
+        className={classes.dialogLink}
+        to={`${MESSAGES}/${user.id}`}
+      >
+        <Dialog
+          key={user.id}
+          id={user.id}
+          name={user.name}
+          surname={user.surname}
+        />
+      </NavLink>
+    );
   });
 
   return (
     <div>
-      <SearchPanel />
+      <SearchPanelContainer />
       <div className={classes.dialogsData}>{userData}</div>
     </div>
   );
