@@ -11,8 +11,17 @@ export const MessagesPage = ({ state }) => {
   let userData = state.usersData.usersData.map(user => {
     if (user.followed === true) {
       return (
-        <NavLink className={classes.dialogLink} to={`${MESSAGES}/${user.id}`}>
-          <Dialog id={user.id} name={user.name} surname={user.surname} />
+        <NavLink
+          key={user.id}
+          className={classes.dialogLink}
+          to={`${MESSAGES}/${user.id}`}
+        >
+          <Dialog
+            key={user.id}
+            id={user.id}
+            name={user.name}
+            surname={user.surname}
+          />
         </NavLink>
       );
     }

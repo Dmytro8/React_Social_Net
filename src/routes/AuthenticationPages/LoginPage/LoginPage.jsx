@@ -11,7 +11,7 @@ import { loginRequest } from "../../../redux/authReducer";
 
 const LoginPage = ({ loginRequest }) => {
   const onSubmitLogin = formData => {
-    // console.log(formData);
+    console.log(formData);
     loginRequest(formData.email, formData.password);
   };
 
