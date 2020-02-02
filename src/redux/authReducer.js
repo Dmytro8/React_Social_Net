@@ -7,6 +7,7 @@ import {
 const UPDATE_LOGIN_FIELD = "UPDATE_LOGIN_FIELD";
 const UPDATE_PASSWORD_FIELD = "UPDATE_PASSWORD_FIELD";
 const UPDATE_AUTHORIZE = "UPDATE_AUTHORIZE";
+const UPDATE_AUTHORIZING = "UPDATE_AUTHORIZING";
 const AUTHORIZED_FAILED = "AUTHORIZED_FAILED";
 
 let initialState = {
@@ -38,6 +39,12 @@ export const authReducer = (state = initialState, action) => {
         isAuthorized: action.isAuthorized
       };
     }
+    case UPDATE_AUTHORIZING: {
+      return {
+        ...state,
+        isAuthorizing: action.isAuthorizing
+      };
+    }
     case AUTHORIZED_FAILED: {
       return {
         ...state,
@@ -62,20 +69,27 @@ export const toggleAuthorize = booleanVar => ({
   type: UPDATE_AUTHORIZE,
   isAuthorized: booleanVar
 });
+export const toggleAuthorizing = booleanVar => ({
+  type: UPDATE_AUTHORIZING,
+  isAuthorizing: booleanVar
+});
 export const AuthorizeFailed = booleanVar => ({
   type: AUTHORIZED_FAILED,
   isAuthorizeFailed: booleanVar
 });
 
 export const loginRequest = (email, password) => async dispatch => {
+  dispatch(toggleAuthorizing(true));
   let responseAuth = await authAPI.auth(email, password);
   // debugger;
   if (responseAuth.resultCode === 0) {
     let responseLogin = await authAPI.login();
-    // debugger;
+
     dispatch(setUserProfile(responseLogin));
+    dispatch(toggleAuthorizing(false));
     dispatch(toggleAuthorize(true));
     dispatch(toggleIsProfileFetching(false));
+    // debugger;
   } else {
     // console.log("authorize failed");
     dispatch(toggleAuthorize(false));

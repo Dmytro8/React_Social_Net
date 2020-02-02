@@ -30,15 +30,21 @@
   display: grid;
   justify-content: center;
   margin-top: 20px;
+  background: rgb(0, 152, 223);
   // :focus {
   //   background: rgb(0, 152, 223);
   // }
   :active {
-    background: rgb(0, 152, 223);
   }
   button {
     width: 300px;
     height: 50px;
+  }
+}
+.buttonSignInInactive {
+  filter: brightness(85%);
+  button {
+    cursor: wait;
   }
 }
 

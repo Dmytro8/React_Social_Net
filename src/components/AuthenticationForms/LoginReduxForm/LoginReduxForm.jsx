@@ -4,8 +4,10 @@ import { reduxForm, Field } from "redux-form";
 import classes from "../AuthenticationForm.module.scss";
 import { required } from "../../../utils/validators/validators";
 import { Input } from "../../common/FormControls/FormControls";
+import cx from "classnames";
 
 const LoginForm = props => {
+  // debugger;
   return (
     <form action="" onSubmit={props.handleSubmit}>
       <Field
@@ -27,10 +29,28 @@ const LoginForm = props => {
         <Field component="input" type="checkbox" name="rememberMe" />
         <span className={classes.rememberMeCheckMark}>remember me</span>
       </div>
-      <div className={classes.buttonSign}>
-        {/* <button onClick={() => loginRequest(email, password)}>Sign In</button> */}
-        <button>Sign In</button>
-      </div>
+      <>
+        {!props.isAuthorizing ? (
+          <div className={classes.buttonSign}>
+            {/* <div
+        className={cx({
+          [classes.buttonSign]: true,
+          [classes.buttonSignInInactive]: props.isAuthorizing
+        })}
+      > */}
+            <button>Sign In</button>
+          </div>
+        ) : (
+          <div
+            className={cx({
+              [classes.buttonSign]: true,
+              [classes.buttonSignInInactive]: true
+            })}
+          >
+            <button disabled>Signing In...</button>
+          </div>
+        )}
+      </>
       <div className={classes.optionsText}>
         <h4>Or login with</h4>
       </div>

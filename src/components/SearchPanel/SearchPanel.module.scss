@@ -4,6 +4,8 @@
   position: fixed;
   width: 700px;
   border-bottom: 1px solid silver;
+  background-color: white;
+  z-index: 1;
   .inputWrapper {
     padding-left: 20px;
     input {
@@ -14,8 +16,4 @@
       border: none;
     }
   }
-  // :focus {
-  //   background-color: aliceblue;
-  //   outline: 0;
-  // }
 }

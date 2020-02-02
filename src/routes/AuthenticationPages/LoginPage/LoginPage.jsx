@@ -9,7 +9,7 @@ import { REGISTRATION } from "../../../constants/url";
 import { LoginReduxForm } from "../../../components/AuthenticationForms/LoginReduxForm";
 import { loginRequest } from "../../../redux/authReducer";
 
-const LoginPage = ({ loginRequest }) => {
+const LoginPage = ({ loginRequest, isAuthorizing }) => {
   const onSubmitLogin = formData => {
     // console.log(formData);
     loginRequest(formData.email, formData.password);
@@ -21,7 +21,7 @@ const LoginPage = ({ loginRequest }) => {
         <h1 className={classes.headerText}>Sign In</h1>
       </div>
       {/* <LoginFormContainer /> */}
-      <LoginReduxForm onSubmit={onSubmitLogin} />
+      <LoginReduxForm onSubmit={onSubmitLogin} isAuthorizing={isAuthorizing} />
       <div className={classes.signUp}>
         <NavLink to={REGISTRATION}>
           <h4>Sign Up</h4>
@@ -31,4 +31,10 @@ const LoginPage = ({ loginRequest }) => {
   );
 };
 
-export default connect(null, { loginRequest })(LoginPage);
+const mapStateToProps = state => {
+  return {
+    isAuthorizing: state.authData.isAuthorizing
+  };
+};
+
+export default connect(mapStateToProps, { loginRequest })(LoginPage);
