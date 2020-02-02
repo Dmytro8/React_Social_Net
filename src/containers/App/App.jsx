@@ -39,7 +39,8 @@ export const AppRaw = ({ state }) => {
   let userDataRoutes = state.usersData.usersData.map(user => (
     <Route
       exact
-      render={() => <DialogOpenContainer user={user} />}
+      key={user.id}
+      render={() => <DialogOpenContainer key={user.id} user={user} />}
       path={`${MESSAGES}/${user.id}`}
     />
   ));

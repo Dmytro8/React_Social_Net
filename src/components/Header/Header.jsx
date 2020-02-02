@@ -5,7 +5,7 @@ import logo from "../../static/images/logo.png";
 // import { PROFILE } from "../../constants/url";
 import classes from "./Header.module.scss";
 
-export const Header = ({ toggleAuthorize }) => {
+export const Header = ({ logoutRequest }) => {
   return (
     <header className={classes.header}>
       <div className={classes.wrapper}>
@@ -20,7 +20,7 @@ export const Header = ({ toggleAuthorize }) => {
           <div className={classes.logOut}>
             <button
               onClick={() => {
-                toggleAuthorize(false);
+                logoutRequest();
               }}
             >
               Log out

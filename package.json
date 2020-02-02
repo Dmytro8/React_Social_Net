@@ -23,6 +23,7 @@
     "redux-form": "^8.2.6",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
+    "trim-right": "^1.0.1",
     "typescript": "^3.6.3"
   },
   "scripts": {

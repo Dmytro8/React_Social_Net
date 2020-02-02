@@ -5,7 +5,6 @@ import { Post } from "../Post/Post";
 import { WhatsNew } from "../WhatsNew";
 
 export const Posts = ({ name, surname, posts, addPost }) => {
-  // debugger;
   let postData = posts.map(post => (
     <div className={classes.postWrapper} key={post.id}>
       <Post

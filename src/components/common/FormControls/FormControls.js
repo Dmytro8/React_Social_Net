@@ -16,7 +16,6 @@ export const Input = ({ input, meta, ...props }) => {
 };
 
 export const Textarea = ({ input, meta, ...props }) => {
-  console.log(meta);
   const hasError = meta.submitFailed && meta.dirty === false;
   return (
     <div className={hasError ? classes.errorTextarea : ""}>
