@@ -9,22 +9,15 @@ const instance = axios.create({
 });
 
 export const authAPI = {
-  login(email = "", password = "") {
-    // return instance.get(`login/${email}-${password}`).then(response => {
-    //   return response.data;
-    // });
-
-    return instance
-      .post(
-        "",
-        { email, password }
-        // { withCredentials: true }
-      )
-      .then(() =>
-        instance.get("/login").then(response => {
-          return response.data;
-        })
-      );
+  auth(email = "", password = "") {
+    return instance.post("", { email, password }).then(response => {
+      return response.data;
+    });
+  },
+  login() {
+    return instance.get("/login").then(response => {
+      return response.data;
+    });
   },
   logout() {
     return instance.put("/logout").then(response => {
