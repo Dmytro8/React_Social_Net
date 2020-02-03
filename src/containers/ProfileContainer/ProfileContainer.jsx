@@ -2,10 +2,7 @@ import React, { Suspense } from "react";
 import { connect } from "react-redux";
 import { Route, Redirect, Switch, withRouter } from "react-router-dom";
 
-import axios from "axios";
-
 import classes from "./ProfileContainer.module.scss";
-import { ProfileBg } from "../../components/ProfileComponents/ProfileBg";
 
 import {
   addPost,
@@ -15,24 +12,17 @@ import {
 import { getUsers } from "../../redux/usersReducer";
 
 import { Preloader } from "../../components/common/Preloader";
-import { ProfileHeader } from "../../components/ProfileComponents/ProfileHeader";
-import { Posts } from "../../components/ProfileComponents/Posts";
 import ProfileLayout from "../../layouts/ProfileLayout";
-import { PROFILE } from "../../constants/url";
+import {
+  PROFILE,
+  PROFILE_POSTS,
+  PROFILE_PHOTOS,
+  PROFILE_VIDEOS
+} from "../../constants/url";
 import { PostsContainer } from "../PostsContainer";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    // let userId = this.props.match.params.userId;
-    // if (!userId) {
-    //   userId = 10;
-    // }
-    // axios
-    //   .get(`http://127.0.0.1:5000/profile/${this.props.userId}`)
-    //   .then(response => {
-    //     this.props.setUserProfile(response.data);
-    //     this.props.toggleIsProfileFetching(false);
-    //   });
     this.props.getUsers(this.props.profileId);
   }
   render() {
@@ -59,40 +49,45 @@ class ProfileContainer extends React.Component {
               }
             >
               <Switch>
-                <Route component={PostsContainer} path={`${PROFILE}/posts`} />
                 <Route
-                  render={() => <div>Section with new info</div>}
+                  exact
+                  render={() => (
+                    <div>
+                      <div>Section with general information about user</div>
+                      <div>The section is currently under development</div>
+                    </div>
+                  )}
                   path={`${PROFILE}`}
                 />
                 <Route
-                  render={() => <div>Section with new info</div>}
-                  path={`${PROFILE}`}
+                  exact
+                  component={PostsContainer}
+                  path={`${PROFILE_POSTS}`}
                 />
                 <Route
-                  render={() => <div>Section with new info</div>}
-                  path={`${PROFILE}`}
+                  exact
+                  render={() => (
+                    <div>
+                      <div>Section with photos</div>
+                      <div>The section is currently under development</div>
+                    </div>
+                  )}
+                  path={`${PROFILE_PHOTOS}`}
                 />
+                <Route
+                  exact
+                  render={() => (
+                    <div>
+                      <div>Section with videos</div>
+                      <div>The section is currently under development</div>
+                    </div>
+                  )}
+                  path={`${PROFILE_VIDEOS}`}
+                />
+                <Redirect to={PROFILE} />
               </Switch>
             </Suspense>
           </ProfileLayout>
-          // <div className={classes.wrapper}>
-          //   <ProfileBg />
-          //   <div className={classes.profileContent}>
-          //     {/* <ProfileHeaderContainer /> */}
-          //     <ProfileHeader
-          //       name={this.props.profile.name}
-          //       surname={this.props.profile.surname}
-          //       status={this.props.profile.status}
-          //     />
-          //     {/* <PostsContainer /> */}
-          //     <Posts
-          //       name={this.props.profile.name}
-          //       surname={this.props.profile.surname}
-          //       posts={this.props.profile.posts}
-          //       addPost={this.props.addPost}
-          //     />
-          //   </div>
-          // </div>
         )}
       </>
     );

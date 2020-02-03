@@ -2,7 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./ProfileHeader.module.scss";
 
-import { PROFILE } from "../../../constants/url";
+import {
+  PROFILE,
+  PROFILE_POSTS,
+  PROFILE_PHOTOS,
+  PROFILE_VIDEOS
+} from "../../../constants/url";
 import { ProfileStatus } from "../ProfileStatus";
 import { ProfileAvatarMini } from "../ProfileAvatarMini";
 
@@ -36,15 +41,15 @@ export const ProfileHeader = ({ name, surname, status }) => {
           </li>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}/posts`}>Posts</Link>
+            <Link to={`${PROFILE_POSTS}`}>Posts</Link>
           </li>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}`}>Photos</Link>
+            <Link to={`${PROFILE_PHOTOS}`}>Photos</Link>
           </li>
           <li className={classes.navLinks}>
             {/* eslint-disable-next-line */}
-            <Link to={`${PROFILE}`}>Videos</Link>
+            <Link to={`${PROFILE_VIDEOS}`}>Videos</Link>
           </li>
         </ul>
       </nav>
