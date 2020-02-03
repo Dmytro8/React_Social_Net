@@ -24,6 +24,16 @@ const LoginForm = props => {
         component={Input}
         validate={[required]}
       />
+      {/* <div className={"btn-group pull-right " + (this.props.showBulkActions ? 'show' : 'hidden')}></div> */}
+      <div
+        className={
+          props.isAuthorizeFailed
+            ? classes.errorAuthentication
+            : classes.successAuthentication
+        }
+      >
+        <h5>Incorrect email or password</h5>
+      </div>
       <div className={classes.rememberMe}>
         {/* <input type="checkbox" /> */}
         <Field component="input" type="checkbox" name="rememberMe" />

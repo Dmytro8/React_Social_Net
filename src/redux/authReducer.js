@@ -81,24 +81,22 @@ export const AuthorizeFailed = booleanVar => ({
 export const loginRequest = (email, password) => async dispatch => {
   dispatch(toggleAuthorizing(true));
   let responseAuth = await authAPI.auth(email, password);
-  // debugger;
   if (responseAuth.resultCode === 0) {
     let responseLogin = await authAPI.login();
 
     dispatch(setUserProfile(responseLogin));
     dispatch(toggleAuthorizing(false));
     dispatch(toggleAuthorize(true));
+    dispatch(AuthorizeFailed(false));
     dispatch(toggleIsProfileFetching(false));
-    // debugger;
   } else {
-    // console.log("authorize failed");
     dispatch(toggleAuthorize(false));
     dispatch(AuthorizeFailed(true));
+    dispatch(toggleAuthorizing(false));
   }
 };
 
 export const logoutRequest = () => async dispatch => {
   let response = await authAPI.logout();
-  // debugger;
   dispatch(toggleAuthorize(false));
 };
