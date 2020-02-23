@@ -1,15 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
-
-import { follow, unfollow } from "../../redux/usersReducer";
+import { AppStateType } from "../../redux/reduxStore";
+import { follow, unfollow, UserDataType } from "../../redux/usersReducer";
 import { Users } from "../../components/UsersComponents/Users";
 import { Preloader } from "../../components/common/Preloader";
 import classes from "./UsersContainer.module.scss";
-import { getProfileId } from "../../redux/profileSelectors";
 import { getUsersData, getIsFetching } from "../../redux/usersSelectors";
 import { SearchPanelContainer } from "../SearchPanelContainer";
 
-export const UsersContainer = props => {
+type MapStatePropsType = {
+  searchUser: string;
+  users: Array<UserDataType>;
+  isFetching: boolean;
+};
+type MapDispatchPropsType = {
+  follow: (userId: string) => void;
+  unfollow: (userId: string) => void;
+};
+type OwnPropsType = {};
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
+
+const UsersContainer: React.FC<PropsType> = props => {
+  debugger;
   const filterUsers = () => {
     if (props.searchUser) {
       const regexLiteral = new RegExp(`^${props.searchUser}+`, "i");
@@ -38,16 +50,20 @@ export const UsersContainer = props => {
   );
 };
 
-let mapStateToProps = state => {
+let mapStateToProps = (state: AppStateType) => {
   return {
-    profileId: getProfileId(state),
     users: getUsersData(state),
     isFetching: getIsFetching(state),
     searchUser: state.usersData.searchField
   };
 };
 
-export default connect(mapStateToProps, {
+export default connect<
+  MapStatePropsType,
+  MapDispatchPropsType,
+  OwnPropsType,
+  AppStateType
+>(mapStateToProps, {
   follow,
   unfollow
 })(UsersContainer);
