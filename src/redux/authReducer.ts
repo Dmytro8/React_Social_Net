@@ -1,38 +1,27 @@
 import { authAPI } from "../api/authApi";
-import {
-  setUserProfile,
-  toggleIsProfileFetching
-} from "../redux/profileReducer";
+import { setUserProfile, toggleIsProfileFetching } from "./profileReducer";
 
-const UPDATE_LOGIN_FIELD = "UPDATE_LOGIN_FIELD";
-const UPDATE_PASSWORD_FIELD = "UPDATE_PASSWORD_FIELD";
 const UPDATE_AUTHORIZE = "UPDATE_AUTHORIZE";
 const UPDATE_AUTHORIZING = "UPDATE_AUTHORIZING";
 const AUTHORIZED_FAILED = "AUTHORIZED_FAILED";
 
-let initialState = {
-  // userId: ,
-  // email: "",
-  // password: "",
+type InitialAuthStateType = {
+  isAuthorized: boolean;
+  isAuthorizing: boolean;
+  isAuthorizeFailed: boolean;
+};
+
+let initialState: InitialAuthStateType = {
   isAuthorized: false,
   isAuthorizing: false,
   isAuthorizeFailed: false
 };
 
-export const authReducer = (state = initialState, action) => {
+export const authReducer = (
+  state = initialState,
+  action: any
+): InitialAuthStateType => {
   switch (action.type) {
-    case UPDATE_LOGIN_FIELD: {
-      return {
-        ...state,
-        email: action.email
-      };
-    }
-    case UPDATE_PASSWORD_FIELD: {
-      return {
-        ...state,
-        password: action.password
-      };
-    }
     case UPDATE_AUTHORIZE: {
       return {
         ...state,
@@ -57,28 +46,42 @@ export const authReducer = (state = initialState, action) => {
   }
 };
 
-export const updateLoginField = emailBody => ({
-  type: UPDATE_LOGIN_FIELD,
-  email: emailBody
-});
-export const updatePasswordField = passwordBody => ({
-  type: UPDATE_PASSWORD_FIELD,
-  password: passwordBody
-});
-export const toggleAuthorize = booleanVar => ({
+type ToogleAuthorizeActionType = {
+  type: typeof UPDATE_AUTHORIZE;
+  isAuthorized: boolean;
+};
+export const toggleAuthorize = (
+  booleanVar: boolean
+): ToogleAuthorizeActionType => ({
   type: UPDATE_AUTHORIZE,
   isAuthorized: booleanVar
 });
-export const toggleAuthorizing = booleanVar => ({
+
+type ToogleAuthorizingActionType = {
+  type: typeof UPDATE_AUTHORIZING;
+  isAuthorizing: boolean;
+};
+export const toggleAuthorizing = (
+  booleanVar: boolean
+): ToogleAuthorizingActionType => ({
   type: UPDATE_AUTHORIZING,
   isAuthorizing: booleanVar
 });
-export const AuthorizeFailed = booleanVar => ({
+
+type AuthorizeFailedActionType = {
+  type: typeof AUTHORIZED_FAILED;
+  isAuthorizeFailed: boolean;
+};
+export const AuthorizeFailed = (
+  booleanVar: boolean
+): AuthorizeFailedActionType => ({
   type: AUTHORIZED_FAILED,
   isAuthorizeFailed: booleanVar
 });
 
-export const loginRequest = (email, password) => async dispatch => {
+export const loginRequest = (email: string, password: string) => async (
+  dispatch: any
+) => {
   dispatch(toggleAuthorizing(true));
   let responseAuth = await authAPI.auth(email, password);
   if (responseAuth.resultCode === 0) {
@@ -96,7 +99,7 @@ export const loginRequest = (email, password) => async dispatch => {
   }
 };
 
-export const logoutRequest = () => async dispatch => {
-  let response = await authAPI.logout();
+export const logoutRequest = () => async (dispatch: any) => {
+  await authAPI.logout();
   dispatch(toggleAuthorize(false));
 };

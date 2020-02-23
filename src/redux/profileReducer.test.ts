@@ -1,6 +1,10 @@
-import { addPost, profileReducer } from "./profileReducer";
+import {
+  addPost,
+  profileReducer,
+  InitialProfileStateType
+} from "./profileReducer";
 
-let state = {
+let state: InitialProfileStateType = {
   profile: {
     id: "99",
     email: "margot.robbie@gmail.com",
@@ -15,7 +19,7 @@ let state = {
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero nam cumque quod debitis, \
             molestias nesciunt veniam qui nostrum sunt labore!",
         likesCount: 1923422,
-        time: 222
+        time: "222"
       },
       {
         id: 2,
@@ -26,7 +30,7 @@ let state = {
             nam excepturi ipsum corporis quam dolore fugit laboriosam dolor ipsa rerum saepe enim? \
             Sed, excepturi?",
         likesCount: 45,
-        time: 222
+        time: "222"
       },
       {
         id: 3,
@@ -35,7 +39,7 @@ let state = {
             commodi minus asperiores nam delectus, ut, accusantium fugiat totam accusamus sed. \
             Ea id harum veniam voluptas fuga, et qui obcaecati",
         likesCount: 3,
-        time: 222
+        time: "222"
       },
       {
         id: 4,
@@ -44,7 +48,7 @@ let state = {
             commodi minus asperiores nam delectus, ut, accusantium fugiat totam accusamus sed. \
             Ea id harum veniam voluptas fuga, et qui obcaecati",
         likesCount: 2086,
-        time: 222
+        time: "222"
       },
       {
         id: 5,
@@ -53,10 +57,11 @@ let state = {
             commodi minus asperiores nam delectus, ut, accusantium fugiat totam accusamus sed. \
             Ea id harum veniam voluptas fuga, et qui obcaecatii",
         likesCount: 54673,
-        time: 222
+        time: "222"
       }
     ]
-  }
+  },
+  isProfileFetching: false
 };
 
 it("id of added post should be incremented ", () => {
