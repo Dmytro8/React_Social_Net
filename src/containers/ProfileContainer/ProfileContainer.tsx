@@ -1,15 +1,10 @@
 import React, { Suspense } from "react";
 import { connect } from "react-redux";
+
 import { Route, Redirect, Switch } from "react-router-dom";
 
 import classes from "./ProfileContainer.module.scss";
 
-import {
-  addPost,
-  setUserProfile,
-  toggleIsProfileFetching,
-  ProfileType
-} from "../../redux/profileReducer";
 import { getUsers } from "../../redux/usersReducer";
 
 import { Preloader } from "../../components/common/Preloader";
@@ -24,14 +19,10 @@ import { PostsContainer } from "../PostsContainer";
 import { AppStateType } from "../../redux/reduxStore";
 
 type MapStatePropsType = {
-  profile: ProfileType;
   isProfileFetching: boolean;
 };
 type MapDispatchPropsType = {
-  addPost: (newPostBody: string) => void;
-  setUserProfile: (profile: ProfileType) => void;
-  toggleIsProfileFetching: (isProfileFetching: boolean) => void;
-  getUsers: (profileId: string) => Promise<void>;
+  getUsers: (profileId: string) => void;
 };
 type OwnPropsType = {
   profileId: string;
@@ -113,15 +104,16 @@ class ProfileContainer extends React.Component<PropsType> {
 }
 
 let mapStateToProps = (state: AppStateType) => ({
-  profile: state.profileData.profile,
   isProfileFetching: state.profileData.isProfileFetching
 });
 
 // let WithUrlDataProfileContainer = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, {
-  addPost,
-  setUserProfile,
-  toggleIsProfileFetching,
+export default connect<
+  MapStatePropsType,
+  MapDispatchPropsType,
+  OwnPropsType,
+  AppStateType
+>(mapStateToProps, {
   getUsers
 })(ProfileContainer);

@@ -19,4 +19,7 @@ export const ProfileHeaderContainer = connect<
   {},
   {},
   AppStateType
->(mapStateToProps)(ProfileHeader);
+>(
+  mapStateToProps,
+  {}
+)(ProfileHeader);
