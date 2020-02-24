@@ -66,11 +66,7 @@ export const AppRaw = ({ state }) => {
           >
             <Switch>
               <Route component={ProfilePage} path={`${PROFILE}/:userId?`} />
-              <Route
-                exact
-                render={() => <MessagesPage state={state} />}
-                path={MESSAGES}
-              />
+              <Route exact component={MessagesPage} path={MESSAGES} />
               <Route exact component={UsersPage} path={USERS} />
               {userDataRoutes}
               <Route exact component={NewsPage} path={NEWS} />

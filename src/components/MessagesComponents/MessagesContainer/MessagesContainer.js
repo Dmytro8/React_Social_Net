@@ -1,21 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Dialog } from "../Dialog";
+import { MESSAGES } from "../../../constants/url";
+import { SearchPanelContainer } from "../../../containers/SearchPanelContainer";
+import classes from "./MessagesContainer.module.scss";
 
-import classes from "./MessagesPage.module.scss";
-
-import { Dialog } from "../../components/MessagesComponents/Dialog/Dialog";
-import { MESSAGES } from "../../constants/url";
-import { SearchPanel } from "../../components/SearchPanel";
-import { SearchPanelContainer } from "../../containers/SearchPanelContainer";
-
-export const MessagesPage = ({ state }) => {
+export const MessagesContainer = ({ usersData }) => {
   // const regexLiteral = `/^El+/i`;
-  const searchUser = state.usersData.searchField;
+  const searchUser = usersData.searchField;
 
   const filterUsers = () => {
     if (searchUser) {
       const regexLiteral = new RegExp(`^${searchUser}+`, "i");
-      const filterUsers = state.usersData.usersData.filter(user => {
+      const filterUsers = usersData.filter(user => {
         return (
           user.followed &&
           (regexLiteral.test(user.name) || regexLiteral.test(user.surname))
@@ -23,7 +20,7 @@ export const MessagesPage = ({ state }) => {
       });
       return filterUsers;
     } else {
-      const filterUsers = state.usersData.usersData.filter(user => {
+      const filterUsers = usersData.filter(user => {
         return user.followed;
       });
       return filterUsers;
