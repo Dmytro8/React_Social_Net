@@ -1,13 +1,14 @@
 import React, { Suspense } from "react";
 import { connect } from "react-redux";
-import { Route, Redirect, Switch, withRouter } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 
 import classes from "./ProfileContainer.module.scss";
 
 import {
   addPost,
   setUserProfile,
-  toggleIsProfileFetching
+  toggleIsProfileFetching,
+  ProfileType
 } from "../../redux/profileReducer";
 import { getUsers } from "../../redux/usersReducer";
 
@@ -20,8 +21,24 @@ import {
   PROFILE_VIDEOS
 } from "../../constants/url";
 import { PostsContainer } from "../PostsContainer";
+import { AppStateType } from "../../redux/reduxStore";
 
-class ProfileContainer extends React.Component {
+type MapStatePropsType = {
+  profile: ProfileType;
+  isProfileFetching: boolean;
+};
+type MapDispatchPropsType = {
+  addPost: (newPostBody: string) => void;
+  setUserProfile: (profile: ProfileType) => void;
+  toggleIsProfileFetching: (isProfileFetching: boolean) => void;
+  getUsers: (profileId: string) => Promise<void>;
+};
+type OwnPropsType = {
+  profileId: string;
+};
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
+
+class ProfileContainer extends React.Component<PropsType> {
   componentDidMount() {
     this.props.getUsers(this.props.profileId);
   }
@@ -43,6 +60,7 @@ class ProfileContainer extends React.Component {
           <ProfileLayout>
             <Suspense
               fallback={
+                //@ts-ignore
                 <div style={spinnerStyle}>
                   <Preloader />
                 </div>
@@ -94,17 +112,16 @@ class ProfileContainer extends React.Component {
   }
 }
 
-let mapStateToProps = state => ({
-  userId: state.authData.userId,
+let mapStateToProps = (state: AppStateType) => ({
   profile: state.profileData.profile,
   isProfileFetching: state.profileData.isProfileFetching
 });
 
-let WithUrlDataProfileContainer = withRouter(ProfileContainer);
+// let WithUrlDataProfileContainer = withRouter(ProfileContainer);
 
 export default connect(mapStateToProps, {
   addPost,
   setUserProfile,
   toggleIsProfileFetching,
   getUsers
-})(WithUrlDataProfileContainer);
+})(ProfileContainer);

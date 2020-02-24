@@ -1,3 +1,5 @@
+import { AppStateType } from "./reduxStore";
+import { ThunkAction } from "redux-thunk";
 import { usersAPI } from "../api/usersApi";
 
 const SEND_MESSAGE = "SEND-MESSAGE";
@@ -157,7 +159,9 @@ export const updateSeachField = (
   fieldBody
 });
 
-export const getUsers = (profileId: string) => async (dispatch: any) => {
+export const getUsers = (
+  profileId: string
+): ThunkAction<void, AppStateType, undefined, any> => async (dispatch: any) => {
   let response = await usersAPI.getUsers();
   dispatch(toggleIsFetching(false));
   let usersFilter = response.users.filter(

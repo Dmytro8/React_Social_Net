@@ -17,8 +17,7 @@ type MapDispatchPropsType = {
   follow: (userId: string) => void;
   unfollow: (userId: string) => void;
 };
-type OwnPropsType = {};
-type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
+type PropsType = MapStatePropsType & MapDispatchPropsType;
 
 const UsersContainer: React.FC<PropsType> = props => {
   debugger;
@@ -61,7 +60,7 @@ let mapStateToProps = (state: AppStateType) => {
 export default connect<
   MapStatePropsType,
   MapDispatchPropsType,
-  OwnPropsType,
+  {},
   AppStateType
 >(mapStateToProps, {
   follow,

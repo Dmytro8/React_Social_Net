@@ -24,7 +24,7 @@ const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const TOGGLE_IS_PROFILE_FETCHING = "TOGGLE_IS_PROFILE_FETCHING";
 
-type PostType = {
+export type PostType = {
   id: number | null;
   postDescription: string | null;
   time: string | null;
