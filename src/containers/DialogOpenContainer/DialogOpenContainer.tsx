@@ -8,12 +8,15 @@ import { AppStateType } from "../../redux/reduxStore";
 // type MapStatePropsType = {
 //   usersData: Array<UserDataType>;
 // };
-// type MapDispatchPropsType = {
-//   sendMessage: () => void;
-// };
-// type PropsType = MapStatePropsType & MapDispatchPropsType;
+type MapDispatchPropsType = {
+  sendMessage: (userId: string, newMessageBody: string) => void;
+};
+type OwnPropsType = {
+  user: UserDataType;
+};
+type PropsType = OwnPropsType & MapDispatchPropsType;
 
-export const DialogOpenContainerRaw = props => {
+export const DialogOpenContainer: React.FC<PropsType> = props => {
   return (
     <DialogOpen
       userId={props.user.id}
@@ -25,12 +28,13 @@ export const DialogOpenContainerRaw = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: AppStateType) => {
   return {
     usersData: state.usersData
   };
 };
 
-export const DialogOpenContainer = connect(mapStateToProps, { sendMessage })(
-  DialogOpenContainerRaw
-);
+export default connect<{}, MapDispatchPropsType, OwnPropsType, AppStateType>(
+  mapStateToProps,
+  { sendMessage }
+)(DialogOpenContainer);

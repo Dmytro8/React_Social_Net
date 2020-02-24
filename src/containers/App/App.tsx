@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 
 import {
@@ -18,12 +18,14 @@ import { connect } from "react-redux";
 
 import "./App.scss";
 
-import { DialogOpenContainer } from "../../containers/DialogOpenContainer";
+import { DialogOpenContainer } from "../DialogOpenContainer";
 import { Preloader } from "../../components/common/Preloader";
 import { AuthLayout } from "../../layouts/AuthLayout";
 import { AuthenticationPage } from "../../routes/AuthenticationPages/AuthenticationPage";
 import { LoginPage } from "../../routes/AuthenticationPages/LoginPage";
 import { RegistrationPage } from "../../routes/AuthenticationPages/RegistrationPage";
+import { AppStateType } from "../../redux/reduxStore";
+import { UserDataType } from "../../redux/usersReducer";
 
 // Import pages
 const ProfilePage = lazy(() => import("../../routes/ProfilePage"));
@@ -33,15 +35,27 @@ const NewsPage = lazy(() => import("../../routes/NewsPage"));
 const MusicPage = lazy(() => import("../../routes/MusicPage"));
 const SettingsPage = lazy(() => import("../../routes/SettingsPage"));
 
-export const AppRaw = ({ state }) => {
-  let userDataRoutes = state.usersData.usersData.map(user => (
-    <Route
-      exact
-      key={user.id}
-      render={() => <DialogOpenContainer key={user.id} user={user} />}
-      path={`${MESSAGES}/${user.id}`}
-    />
-  ));
+type MapStatePropsType = {
+  usersData: Array<UserDataType>;
+  isAuthorized: boolean;
+};
+type PropsType = MapStatePropsType;
+
+export const AppRaw: React.FC<PropsType> = ({ usersData, isAuthorized }) => {
+  const setuserDataRoutes = () => {
+    if (isAuthorized) {
+      let userDataRoutes = usersData.map((user: UserDataType) => (
+        <Route
+          exact
+          key={user.id}
+          //@ts-ignore
+          render={() => <DialogOpenContainer key={user.id} user={user} />}
+          path={`${MESSAGES}/${user.id}`}
+        />
+      ));
+      return userDataRoutes;
+    } else return "";
+  };
 
   const spinnerStyle = {
     position: "fixed",
@@ -53,10 +67,11 @@ export const AppRaw = ({ state }) => {
 
   return (
     <>
-      {state.authData.isAuthorized ? (
+      {isAuthorized ? (
         <MainLayout>
           <Suspense
             fallback={
+              //@ts-ignore
               <div style={spinnerStyle}>
                 <Preloader />
               </div>
@@ -65,7 +80,7 @@ export const AppRaw = ({ state }) => {
             <Switch>
               <Route component={ProfilePage} path={`${PROFILE}/:userId?`} />
               <Route exact component={MessagesPage} path={MESSAGES} />
-              {userDataRoutes}
+              {setuserDataRoutes()}
               <Route exact component={UsersPage} path={USERS} />
               <Route exact component={NewsPage} path={NEWS} />
               <Route exact component={MusicPage} path={MUSIC} />
@@ -78,6 +93,7 @@ export const AppRaw = ({ state }) => {
         <AuthLayout>
           <Suspense
             fallback={
+              //@ts-ignore
               <div style={spinnerStyle}>
                 <Preloader />
               </div>
@@ -96,10 +112,12 @@ export const AppRaw = ({ state }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    state: state
-  };
-};
+const mapStateToProps = (state: AppStateType) => ({
+  usersData: state.usersData.usersData,
+  isAuthorized: state.authData.isAuthorized
+});
 
-export const App = connect(mapStateToProps)(AppRaw);
+export const App = connect<MapStatePropsType, {}, {}, AppStateType>(
+  mapStateToProps,
+  {}
+)(AppRaw);
