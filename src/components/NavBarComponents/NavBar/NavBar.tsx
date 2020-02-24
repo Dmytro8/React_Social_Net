@@ -1,7 +1,7 @@
 import React from "react";
 
 import classes from "./NavBar.module.scss";
-import NavLinks from "../../components/NavBarComponents/NavLinks";
+import NavLinks from "../NavLinks";
 
 export const NavBar = () => {
   return (

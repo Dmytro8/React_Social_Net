@@ -2,19 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { DialogOpen } from "../../components/MessagesComponents/DialogOpen";
+import { sendMessage, UserDataType } from "../../redux/usersReducer";
+import { AppStateType } from "../../redux/reduxStore";
 
-import { sendMessage } from "../../redux/usersReducer";
+// type MapStatePropsType = {
+//   usersData: Array<UserDataType>;
+// };
+// type MapDispatchPropsType = {
+//   sendMessage: () => void;
+// };
+// type PropsType = MapStatePropsType & MapDispatchPropsType;
 
 export const DialogOpenContainerRaw = props => {
-  // let usersData = props.usersData.usersData.map(user => (
-  //   <DialogOpen
-  //     userId={user.id}
-  //     name={user.name}
-  //     surname={user.surname}
-  //     messages={user.messages}
-  //     sendMessage={props.sendMessage}
-  //   />
-  // ));
   return (
     <DialogOpen
       userId={props.user.id}
@@ -32,7 +31,6 @@ const mapStateToProps = state => {
   };
 };
 
-export const DialogOpenContainer = connect(
-  mapStateToProps,
-  { sendMessage }
-)(DialogOpenContainerRaw);
+export const DialogOpenContainer = connect(mapStateToProps, { sendMessage })(
+  DialogOpenContainerRaw
+);
