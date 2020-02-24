@@ -22,8 +22,6 @@ import { DialogOpenContainer } from "../../containers/DialogOpenContainer";
 import { Preloader } from "../../components/common/Preloader";
 import { AuthLayout } from "../../layouts/AuthLayout";
 import { AuthenticationPage } from "../../routes/AuthenticationPages/AuthenticationPage";
-// import { RegistrationForm } from "../../components/AuthenticationForms/RegistrationForm";
-// import { LoginFormContainer } from "../AuthenticationContainers/LoginFormContainer";
 import { LoginPage } from "../../routes/AuthenticationPages/LoginPage";
 import { RegistrationPage } from "../../routes/AuthenticationPages/RegistrationPage";
 
@@ -67,12 +65,11 @@ export const AppRaw = ({ state }) => {
             <Switch>
               <Route component={ProfilePage} path={`${PROFILE}/:userId?`} />
               <Route exact component={MessagesPage} path={MESSAGES} />
-              <Route exact component={UsersPage} path={USERS} />
               {userDataRoutes}
+              <Route exact component={UsersPage} path={USERS} />
               <Route exact component={NewsPage} path={NEWS} />
               <Route exact component={MusicPage} path={MUSIC} />
               <Route exact component={SettingsPage} path={SETTINGS} />
-
               <Redirect to={PROFILE} />
             </Switch>
           </Suspense>
