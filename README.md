@@ -28,6 +28,8 @@ You also can test my project, just enter next login data:
 
 **password** - `robertDowney`
 
+**The API is deployed on <a href="https://www.heroku.com/" target="_blank">**Heroku**</a> and it can be in sleep mode, you should wait a while the server is started**
+
 ## Tech stack
  - HTML
  - CSS
