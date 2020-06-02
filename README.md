@@ -32,7 +32,7 @@ You also can test my project, just enter next login data:
 
 ## Tech stack
  - HTML
- - CSS
+ - CSS (SCSS)
  - Javascript
  - React
  - Redux
